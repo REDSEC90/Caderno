@@ -1,48 +1,50 @@
-# Caderno
+# SOE-CCG
 
-> Um sistema open source de catálogo, conhecimento e organização de informações construído sobre SQLite.
+> Sistema de Registro, Organização, Evolução e Consulta de Conhecimento Gastronômico.
 
 ## Visão
 
-Caderno nasceu da ideia de transformar um simples catálogo em uma plataforma capaz de armazenar, relacionar, organizar e consultar conhecimento de forma estruturada.
+O SOE-CCG nasceu da necessidade de registrar, preservar, organizar, relacionar e evoluir conhecimento gastronômico durante muitos anos, independentemente da tecnologia utilizada para acessá-lo.
 
-O projeto busca combinar simplicidade operacional, portabilidade e extensibilidade, mantendo o SQLite como base principal de armazenamento.
+Não é um gerenciador de receitas.
 
-## Objetivos
+É um motor de conhecimento gastronômico.
 
-* Catálogo de receitas.
-* Catálogo de conhecimento.
-* Estrutura de relacionamentos entre registros.
-* Busca eficiente.
-* Exportação e importação de dados.
-* Arquitetura modular.
-* Funcionamento offline.
-* Open source.
+## Filosofia
 
-## Status
+O software não nasce pelo código. Nasce pelo conhecimento.
 
-🚧 Em fase inicial de pesquisa e definição de arquitetura.
+Toda implementação é consequência do domínio previamente definido.
 
-Nenhuma API ou estrutura interna deve ser considerada estável neste momento.
+```
+Filosofia → Constituição → Governança → Especificações → Modelagem → Implementação → Interface
+```
 
 ## Princípios
 
-* Simplicidade antes de complexidade.
-* Dados acima da interface.
-* SQLite como cidadão de primeira classe.
-* Open source desde o primeiro commit.
-* Evolução incremental e documentada.
+* O conhecimento é permanente. A implementação é temporária.
+* Markdown é o formato canônico.
+* SQLite é apenas um mecanismo de consulta.
+* Nenhuma informação deve existir exclusivamente no banco de dados.
+* Todo registro possui identificador permanente.
+* Relacionamentos utilizam identificadores, nunca nomes.
 
-## Roadmap Inicial
+## Status
 
-* [ ] Estrutura do repositório
-* [ ] Modelo de dados inicial
-* [ ] Catálogo de receitas
-* [ ] Sistema de tags
-* [ ] Sistema de busca
-* [ ] API local
-* [ ] Interface inicial
+🚧 Fase de fundação — domínio e arquitetura em definição.
+
+Nenhuma API ou estrutura de implementação deve ser considerada estável neste momento.
+
+## Documentação
+
+```
+docs/00-projeto/    Visão, constituição, objetivos, escopo, roadmap, glossário
+docs/01-dominio/    Entidades, esquemas, templates, catálogos
+docs/02-arquitetura/  Fluxo de dados, versionamento, importação, exportação
+docs/03-modelagem/  Modelo ER, normalização, IDs, SQLite
+docs/04-padroes/    Nomenclatura, identificadores, metadados, tags, validação
+```
 
 ## Licença
 
-Licença a definir.
+A definir.
