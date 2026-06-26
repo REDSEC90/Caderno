@@ -31,9 +31,13 @@ Filosofia → Constituição → Governança → Especificações → Modelagem 
 
 ## Status
 
-🚧 Fase de fundação — domínio e arquitetura em definição.
+🟡 Fase de fundação — 78% completa. Pronto para iniciar implementação básica.
 
-Nenhuma API ou estrutura de implementação deve ser considerada estável neste momento.
+**Fases concluídas:** 0 (Identidade) · 1 (Constituição) · 2 (Governança) · 3 (Linguagem) · 4 (Domínio) · 6 (Catálogos) · 7 (Relacionamentos) · 8 (Padrões) · 9 (Modelagem) · 11 (Casos de Uso) · 12 (Validação)
+
+**Fases parciais:** 5 (Contratos — template definido, contratos individuais pendentes)
+
+**Fases pendentes:** 10 (Dados Canônicos — inicial criado) · 13 (Implementação)
 
 ## Documentação
 
