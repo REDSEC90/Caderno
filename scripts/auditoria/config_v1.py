@@ -1,21 +1,18 @@
 """
 Configuração central do FAA v1.
-Todos os caminhos são relativos à raiz do projeto SOE-CCG.
+Caminhos resolvidos contra os nomes reais dos arquivos (com sufixo de versão).
+Este arquivo é imutável após release — não alterar.
 """
 
 from pathlib import Path
 import re
 
-# Raiz do projeto — dois níveis acima de scripts/auditoria/
-ROOT = Path(__file__).parent.parent.parent.resolve()
-
-# Diretórios principais
+ROOT        = Path(__file__).parent.parent.parent.resolve()
 DADOS       = ROOT / "dados"
 DOCS        = ROOT / "docs"
 BANCO       = ROOT / "banco_de_dados"
 SCRIPTS     = ROOT / "scripts"
 
-# Subdiretórios de dados
 DADOS_RECEITAS     = DADOS / "receitas"
 DADOS_INGREDIENTES = DADOS / "ingredientes"
 DADOS_TECNICAS     = DADOS / "tecnicas"
@@ -24,18 +21,14 @@ DADOS_EXECUCOES    = DADOS / "execucoes"
 DADOS_OBSERVACOES  = DADOS / "observacoes"
 DADOS_EXPERIMENTOS = DADOS / "experimentos"
 
-# Documentação de domínio
-TEMPLATES   = DOCS / "01-dominio" / "templates"
-CONTRATOS   = DOCS / "01-dominio" / "contratos"
-ESQUEMAS    = DOCS / "01-dominio" / "esquemas"
-CATALOGOS   = DOCS / "01-dominio" / "catalogos"
-PADROES     = DOCS / "04-padroes"
-REFERENCIAS = DOCS / "99-referencias"
+TEMPLATES  = DOCS / "01-dominio" / "templates"
+CONTRATOS  = DOCS / "01-dominio" / "contratos"
+ESQUEMAS   = DOCS / "01-dominio" / "esquemas"
+CATALOGOS  = DOCS / "01-dominio" / "catalogos"
+PADROES    = DOCS / "04-padroes"
+REFERENCIAS= DOCS / "99-referencias"
+SCHEMA_SQL = BANCO / "esquemas" / "schema-sqlite-v1.sql"
 
-# Esquema SQLite
-SCHEMA_SQL  = BANCO / "esquemas" / "schema-sqlite-v1.sql"
-
-# Prefixos de entidade → diretório de dados
 PREFIXOS: dict[str, Path] = {
     "REC": DADOS_RECEITAS,
     "ING": DADOS_INGREDIENTES,
@@ -46,10 +39,11 @@ PREFIXOS: dict[str, Path] = {
     "EXP": DADOS_EXPERIMENTOS,
 }
 
-# Entidades canônicas do domínio
-ENTIDADES = ["receita", "ingrediente", "tecnica", "equipamento", "execucao", "observacao", "experimento"]
+ENTIDADES = [
+    "receita", "ingrediente", "tecnica", "equipamento",
+    "execucao", "observacao", "experimento",
+]
 
-# Estados válidos por entidade
 ESTADOS_VALIDOS: dict[str, list[str]] = {
     "receita":     ["rascunho", "testada", "validada", "publicada", "arquivada"],
     "ingrediente": ["ativo", "descontinuado", "arquivado"],
@@ -60,49 +54,44 @@ ESTADOS_VALIDOS: dict[str, list[str]] = {
     "experimento": ["aberto", "concluido", "incorporado", "descartado"],
 }
 
-# Metadados obrigatórios em todos os registros
-METADADOS_OBRIGATORIOS = ["id", "tipo", "schema-version", "versao", "status", "criado-em", "atualizado-em", "autor"]
+METADADOS_OBRIGATORIOS = [
+    "id", "tipo", "schema-version", "versao", "status",
+    "criado-em", "atualizado-em", "autor",
+]
 
-# Padrões de validação
 ID_PATTERN   = re.compile(r"^(REC|ING|TEC|EQP|EXE|OBS|EXP|CAT)-\d{6}$")
 DATE_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}$")
-# Padrão de nome de arquivo em dados/ (aceita sufixo -v1 ou sem sufixo de versão no slug)
 NOME_DADOS_PATTERN = re.compile(r"^(REC|ING|TEC|EQP|EXE|OBS|EXP)-\d{6}-.+-v\d+\.md$")
 
-
-# ─── BASELINE v1: ground truth oficial do SOE-CCG ──────────────────────────
-#
-# Mapeamento: nome lógico → caminho real no filesystem (com sufixo de versão).
-# Usado pelo motor de baseline e pelos demais motores para resolução canônica.
+# ─── BASELINE v1 ─────────────────────────────────────────────────────────────
+# Ground truth oficial: nome lógico → caminho real no filesystem.
+# Arquivos versionados são imutáveis; este mapeamento é a referência canônica.
 
 BASELINE_V1: dict[str, Path] = {
-    # Fundação filosófica
-    "filosofia":           DOCS / "00-projeto" / "filosofia-v1.md",
-    "constituicao":        DOCS / "00-projeto" / "constituicao-v1.md",
-    "principios":          DOCS / "00-projeto" / "principios-v1.md",
-    "glossario":           DOCS / "00-projeto" / "glossario-v1.md",
-    "escopo":              DOCS / "00-projeto" / "escopo-v1.md",
-    "objetivos":           DOCS / "00-projeto" / "objetivos-v1.md",
-    "visao":               DOCS / "00-projeto" / "visão-v1.md",
-    "roadmap-master":      DOCS / "00-projeto" / "roadmap-master-v1.md",
-
+    # Fundação
+    "filosofia":              DOCS / "00-projeto" / "filosofia-v1.md",
+    "constituicao":           DOCS / "00-projeto" / "constituicao-v1.md",
+    "principios":             DOCS / "00-projeto" / "principios-v1.md",
+    "glossario":              DOCS / "00-projeto" / "glossario-v1.md",
+    "escopo":                 DOCS / "00-projeto" / "escopo-v1.md",
+    "objetivos":              DOCS / "00-projeto" / "objetivos-v1.md",
+    "visao":                  DOCS / "00-projeto" / "visão-v1.md",
+    "roadmap-master":         DOCS / "00-projeto" / "roadmap-master-v1.md",
     # Arquitetura
-    "diagrama-mestre":     DOCS / "02-arquitetura" / "diagrama-mestre-v1.md",
-    "estrutura-diretorios":DOCS / "02-arquitetura" / "estrutura-diretorios-v1.md",
-    "fluxo-dados":         DOCS / "02-arquitetura" / "fluxo-dados-v1.md",
-    "importacao":          DOCS / "02-arquitetura" / "importacao-v1.md",
-    "exportacao":          DOCS / "02-arquitetura" / "exportacao-v1.md",
-
+    "diagrama-mestre":        DOCS / "02-arquitetura" / "diagrama-mestre-v1.md",
+    "estrutura-diretorios":   DOCS / "02-arquitetura" / "estrutura-diretorios-v1.md",
+    "fluxo-dados":            DOCS / "02-arquitetura" / "fluxo-dados-v1.md",
+    "importacao":             DOCS / "02-arquitetura" / "importacao-v1.md",
+    "exportacao":             DOCS / "02-arquitetura" / "exportacao-v1.md",
     # Domínio — especificações
-    "especificacao-receita":      DOCS / "01-dominio" / "especificacao-receita-v1.md",
-    "especificacao-ingrediente":  DOCS / "01-dominio" / "especificacao-ingrediente-v1.md",
-    "especificacao-tecnica":      DOCS / "01-dominio" / "especificacao-tecnica-v1.md",
-    "especificacao-equipamento":  DOCS / "01-dominio" / "especificacao-equipamento-v1.md",
-    "especificacao-execucao":     DOCS / "01-dominio" / "especificacao-execucao-v1.md",
-    "especificacao-observacao":   DOCS / "01-dominio" / "especificacao-observacao-v1.md",
-    "especificacao-experimento":  DOCS / "01-dominio" / "especificacao-experimento-v1.md",
-    "especificacao-registro":     DOCS / "01-dominio" / "especificacao-registro-v1.md",
-
+    "especificacao-receita":       DOCS / "01-dominio" / "especificacao-receita-v1.md",
+    "especificacao-ingrediente":   DOCS / "01-dominio" / "especificacao-ingrediente-v1.md",
+    "especificacao-tecnica":       DOCS / "01-dominio" / "especificacao-tecnica-v1.md",
+    "especificacao-equipamento":   DOCS / "01-dominio" / "especificacao-equipamento-v1.md",
+    "especificacao-execucao":      DOCS / "01-dominio" / "especificacao-execucao-v1.md",
+    "especificacao-observacao":    DOCS / "01-dominio" / "especificacao-observacao-v1.md",
+    "especificacao-experimento":   DOCS / "01-dominio" / "especificacao-experimento-v1.md",
+    "especificacao-registro":      DOCS / "01-dominio" / "especificacao-registro-v1.md",
     # Domínio — contratos
     "contrato-receita":      CONTRATOS / "contrato-receita-v1.md",
     "contrato-ingrediente":  CONTRATOS / "contrato-ingrediente-v1.md",
@@ -111,7 +100,6 @@ BASELINE_V1: dict[str, Path] = {
     "contrato-execucao":     CONTRATOS / "contrato-execucao-v1.md",
     "contrato-observacao":   CONTRATOS / "contrato-observacao-v1.md",
     "contrato-experimento":  CONTRATOS / "contrato-experimento-v1.md",
-
     # Domínio — templates
     "template-receita":      TEMPLATES / "receita-v1.md",
     "template-ingrediente":  TEMPLATES / "ingrediente-v1.md",
@@ -120,18 +108,15 @@ BASELINE_V1: dict[str, Path] = {
     "template-execucao":     TEMPLATES / "execucao-v1.md",
     "template-observacao":   TEMPLATES / "observacao-v1.md",
     "template-experimento":  TEMPLATES / "experimento-v1.md",
-
-    # Domínio — esquemas YAML
-    "esquema-receita":      ESQUEMAS / "esquema-receita-v1.md",
-    "esquema-ingrediente":  ESQUEMAS / "esquema-ingrediente-v1.md",
-    "esquema-tecnica":      ESQUEMAS / "esquema-tecnica-v1.md",
-    "esquema-equipamento":  ESQUEMAS / "esquema-equipamento-v1.md",
-    "esquema-execucao":     ESQUEMAS / "esquema-execucao-v1.md",
-    "esquema-observacao":   ESQUEMAS / "esquema-observacao-v1.md",
-    # experimento: esquema não existe ainda → ausência real
-    "esquema-experimento":  ESQUEMAS / "esquema-experimento-v1.md",
-
-    # Domínio — catálogos e linguagem
+    # Domínio — esquemas
+    "esquema-receita":       ESQUEMAS / "esquema-receita-v1.md",
+    "esquema-ingrediente":   ESQUEMAS / "esquema-ingrediente-v1.md",
+    "esquema-tecnica":       ESQUEMAS / "esquema-tecnica-v1.md",
+    "esquema-equipamento":   ESQUEMAS / "esquema-equipamento-v1.md",
+    "esquema-execucao":      ESQUEMAS / "esquema-execucao-v1.md",
+    "esquema-observacao":    ESQUEMAS / "esquema-observacao-v1.md",
+    "esquema-experimento":   ESQUEMAS / "esquema-experimento-v1.md",  # ausência real
+    # Linguagem e catálogos
     "linguagem":             DOCS / "01-dominio" / "linguagem-soe-ccg-v0_5.md",
     "separacao-dominios":    DOCS / "01-dominio" / "separacao-dominios-v0_5.md",
     "mapa-relacionamentos":  DOCS / "01-dominio" / "mapa-relacionamentos-v1.md",
@@ -139,7 +124,6 @@ BASELINE_V1: dict[str, Path] = {
     "entidades":             DOCS / "01-dominio" / "entidades-v1.md",
     "estados-todas-entidades": CATALOGOS / "estados-todas-entidades-v0_5.md",
     "categorias":            CATALOGOS / "categorias-v0_5.md",
-
     # Padrões de governança
     "identificadores":       PADROES / "identificadores-v1.md",
     "nomenclatura":          PADROES / "nomenclatura-v1.md",
@@ -152,26 +136,23 @@ BASELINE_V1: dict[str, Path] = {
     "politica-arquivamento": PADROES / "politica-arquivamento-v1.md",
     "politica-revisao":      PADROES / "politica-revisao-v1.md",
     "politica-conflito":     PADROES / "politica-conflito-v1.md",
-
     # Modelagem
-    "conceitos-fundamentais": DOCS / "03-modelagem" / "conceitos-fundamentais-v1.md",
-    "entidades-er":           DOCS / "03-modelagem" / "entidades-er-v1.md",
-    "relacionamentos-model":  DOCS / "03-modelagem" / "relacionamentos-v1.md",
-    "normalizacao":           DOCS / "03-modelagem" / "normalizacao-v1.md",
-    "ids-model":              DOCS / "03-modelagem" / "ids-v1.md",
-    "sqlite":                 DOCS / "03-modelagem" / "sqlite-v1.md",
-
+    "conceitos-fundamentais":DOCS / "03-modelagem" / "conceitos-fundamentais-v1.md",
+    "entidades-er":          DOCS / "03-modelagem" / "entidades-er-v1.md",
+    "relacionamentos-model": DOCS / "03-modelagem" / "relacionamentos-v1.md",
+    "normalizacao":          DOCS / "03-modelagem" / "normalizacao-v1.md",
+    "ids-model":             DOCS / "03-modelagem" / "ids-v1.md",
+    "sqlite-doc":            DOCS / "03-modelagem" / "sqlite-v1.md",
     # Banco de dados
     "schema-sqlite":         BANCO / "esquemas" / "schema-sqlite-v1.sql",
     "seed-categorias":       BANCO / "seeds" / "seed-categorias.sql",
-
     # Desenvolvimento e operação
     "casos-de-uso":          DOCS / "05-desenvolvimento" / "casos-de-uso-v0_5.md",
     "padroes-desenvolvimento": DOCS / "05-desenvolvimento" / "padroes-desenvolvimento-v0_5.md",
     "guia-operacao":         DOCS / "06-operacao" / "guia-operacao-v0_5.md",
 }
 
-# ─── GRUPOS de maturidade (usados pelo motor de decisão) ────────────────────
+# ─── GRUPOS de maturidade e seus limiares de aprovação ───────────────────────
 
 GRUPOS_BASELINE: dict[str, list[str]] = {
     "fundacao": [
@@ -183,23 +164,23 @@ GRUPOS_BASELINE: dict[str, list[str]] = {
     ],
     "dominio_especificacoes": [
         "especificacao-receita", "especificacao-ingrediente", "especificacao-tecnica",
-        "especificacao-equipamento", "especificacao-execucao", "especificacao-observacao",
-        "especificacao-experimento",
+        "especificacao-equipamento", "especificacao-execucao",
+        "especificacao-observacao", "especificacao-experimento",
     ],
     "dominio_contratos": [
         "contrato-receita", "contrato-ingrediente", "contrato-tecnica",
-        "contrato-equipamento", "contrato-execucao", "contrato-observacao",
-        "contrato-experimento",
+        "contrato-equipamento", "contrato-execucao",
+        "contrato-observacao", "contrato-experimento",
     ],
     "dominio_templates": [
         "template-receita", "template-ingrediente", "template-tecnica",
-        "template-equipamento", "template-execucao", "template-observacao",
-        "template-experimento",
+        "template-equipamento", "template-execucao",
+        "template-observacao", "template-experimento",
     ],
     "dominio_esquemas": [
         "esquema-receita", "esquema-ingrediente", "esquema-tecnica",
-        "esquema-equipamento", "esquema-execucao", "esquema-observacao",
-        "esquema-experimento",
+        "esquema-equipamento", "esquema-execucao",
+        "esquema-observacao", "esquema-experimento",
     ],
     "governanca": [
         "identificadores", "nomenclatura", "versionamento", "metadados",
@@ -215,14 +196,14 @@ GRUPOS_BASELINE: dict[str, list[str]] = {
     ],
 }
 
-# Critério de aprovação por grupo (% mínima para PASS)
+# % mínima para PASS em cada grupo
 LIMIAR_APROVACAO: dict[str, int] = {
-    "fundacao":               100,  # obrigatório completo
+    "fundacao":               100,
     "arquitetura":            100,
     "dominio_especificacoes": 100,
     "dominio_contratos":      100,
     "dominio_templates":      100,
-    "dominio_esquemas":        85,  # experimento pode ser ausente sem bloquear
+    "dominio_esquemas":        85,   # esquema-experimento pode estar ausente
     "governanca":             100,
     "modelagem":              100,
     "linguagem_dominio":       85,

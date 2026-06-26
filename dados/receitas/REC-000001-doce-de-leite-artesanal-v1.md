@@ -9,6 +9,9 @@ atualizado-em: 2026-06-26
 autor: sistema
 origem: receita artesanal tradicional
 tags: [doce, brasileiro, laticinio, conserva]
+ingredientes: [ING-000001, ING-000002, ING-000003, ING-000004]
+tecnicas: [TEC-000001, TEC-000003]
+equipamentos: [EQP-000001, EQP-000002]
 ---
 
 # Doce de Leite Artesanal

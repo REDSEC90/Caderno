@@ -1,0 +1,253 @@
+{
+  "timestamp": "2026-06-26T21:03:02.493099+00:00",
+  "score": 100.0,
+  "decision": "APPROVED",
+  "trend": "stable",
+  "baseline": {
+    "present": 71,
+    "total": 71,
+    "pct": 100.0,
+    "groups": {
+      "fundacao": 100.0,
+      "arquitetura": 100.0,
+      "dominio_especificacoes": 100.0,
+      "dominio_contratos": 100.0,
+      "dominio_templates": 100.0,
+      "dominio_esquemas": 100.0,
+      "governanca": 100.0,
+      "modelagem": 100.0,
+      "linguagem_dominio": 100.0
+    },
+    "missing": []
+  },
+  "domains": {
+    "Baseline": 100.0,
+    "Estrutura": 100.0,
+    "Filosofia": 100.0,
+    "Domínio": 100.0,
+    "Cobertura": 100.0,
+    "Maturidade": 100.0,
+    "Semântica": 100.0,
+    "Dados": 100.0,
+    "Integridade": 100.0,
+    "Padrões": 100.0,
+    "Escalabilidade": 100.0,
+    "Dependências": 100.0
+  },
+  "issues": {
+    "critical": [],
+    "warnings": [],
+    "counts": {
+      "critical": 0,
+      "warnings": 0
+    }
+  },
+  "index": [
+    {
+      "id": "REC-000001",
+      "tipo": "receita",
+      "versao": "1",
+      "status": "testada",
+      "path": "dados/receitas/REC-000001-doce-de-leite-artesanal-v1.md",
+      "nome_valido": true,
+      "metadados_ok": true,
+      "links": [
+        "REC-000001",
+        "ING-000001",
+        "ING-000002",
+        "ING-000003",
+        "ING-000004",
+        "TEC-000001",
+        "TEC-000003",
+        "EQP-000001",
+        "EQP-000002"
+      ],
+      "tags": [
+        "doce",
+        "brasileiro",
+        "laticinio",
+        "conserva"
+      ]
+    },
+    {
+      "id": "ING-000001",
+      "tipo": "ingrediente",
+      "versao": "1",
+      "status": "ativo",
+      "path": "dados/ingredientes/ING-000001-leite-integral-v1.md",
+      "nome_valido": true,
+      "metadados_ok": true,
+      "links": [
+        "ING-000001"
+      ],
+      "tags": [
+        "basico",
+        "laticinios"
+      ]
+    },
+    {
+      "id": "ING-000002",
+      "tipo": "ingrediente",
+      "versao": "1",
+      "status": "ativo",
+      "path": "dados/ingredientes/ING-000002-acucar-refinado-v1.md",
+      "nome_valido": true,
+      "metadados_ok": true,
+      "links": [
+        "ING-000002"
+      ],
+      "tags": [
+        "basico",
+        "adocante"
+      ]
+    },
+    {
+      "id": "ING-000003",
+      "tipo": "ingrediente",
+      "versao": "1",
+      "status": "ativo",
+      "path": "dados/ingredientes/ING-000003-sal-refinado-v1.md",
+      "nome_valido": true,
+      "metadados_ok": true,
+      "links": [
+        "ING-000003"
+      ],
+      "tags": [
+        "basico",
+        "tempero"
+      ]
+    },
+    {
+      "id": "ING-000004",
+      "tipo": "ingrediente",
+      "versao": "1",
+      "status": "ativo",
+      "path": "dados/ingredientes/ING-000004-bicarbonato-sodio-v1.md",
+      "nome_valido": true,
+      "metadados_ok": true,
+      "links": [
+        "ING-000004"
+      ],
+      "tags": [
+        "basico",
+        "fermentante",
+        "quimico"
+      ]
+    },
+    {
+      "id": "TEC-000001",
+      "tipo": "tecnica",
+      "versao": "1",
+      "status": "ativo",
+      "path": "dados/tecnicas/TEC-000001-reducao-v1.md",
+      "nome_valido": true,
+      "metadados_ok": true,
+      "links": [
+        "TEC-000001"
+      ],
+      "tags": [
+        "calor",
+        "concentracao"
+      ]
+    },
+    {
+      "id": "TEC-000002",
+      "tipo": "tecnica",
+      "versao": "1",
+      "status": "ativo",
+      "path": "dados/tecnicas/TEC-000002-caramelizacao-v1.md",
+      "nome_valido": true,
+      "metadados_ok": true,
+      "links": [
+        "TEC-000002"
+      ],
+      "tags": [
+        "calor",
+        "acucar",
+        "reacao-maillard"
+      ]
+    },
+    {
+      "id": "TEC-000003",
+      "tipo": "tecnica",
+      "versao": "1",
+      "status": "ativo",
+      "path": "dados/tecnicas/TEC-000003-agitacao-continua-v1.md",
+      "nome_valido": true,
+      "metadados_ok": true,
+      "links": [
+        "TEC-000003"
+      ],
+      "tags": [
+        "mecanico",
+        "prevencao-queima"
+      ]
+    },
+    {
+      "id": "EQP-000001",
+      "tipo": "equipamento",
+      "versao": "1",
+      "status": "ativo",
+      "path": "dados/equipamentos/EQP-000001-panela-fundo-grosso-v1.md",
+      "nome_valido": true,
+      "metadados_ok": true,
+      "links": [
+        "EQP-000001"
+      ],
+      "tags": [
+        "cozimento",
+        "calor-direto"
+      ]
+    },
+    {
+      "id": "EQP-000002",
+      "tipo": "equipamento",
+      "versao": "1",
+      "status": "ativo",
+      "path": "dados/equipamentos/EQP-000002-colher-silicone-v1.md",
+      "nome_valido": true,
+      "metadados_ok": true,
+      "links": [
+        "EQP-000002"
+      ],
+      "tags": [
+        "utensilio",
+        "resistente-calor"
+      ]
+    },
+    {
+      "id": "EXE-000001",
+      "tipo": "execucao",
+      "versao": "1",
+      "status": "consolidada",
+      "path": "dados/execucoes/EXE-000001-doce-leite-execucao1-v1.md",
+      "nome_valido": true,
+      "metadados_ok": true,
+      "links": [
+        "EXE-000001"
+      ],
+      "tags": [
+        "doce-de-leite",
+        "primeira-execucao"
+      ]
+    },
+    {
+      "id": "OBS-000001",
+      "tipo": "observacao",
+      "versao": "1",
+      "status": "ativo",
+      "path": "dados/observacoes/OBS-000001-bicarbonato-efeito-v1.md",
+      "nome_valido": true,
+      "metadados_ok": true,
+      "links": [
+        "OBS-000001",
+        "EXE-000001"
+      ],
+      "tags": [
+        "quimica",
+        "doce-de-leite",
+        "bicarbonato"
+      ]
+    }
+  ]
+}

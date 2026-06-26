@@ -53,3 +53,9 @@ Markdown. Formato oficial e permanente de todo conhecimento no SOE-CCG.
 
 ## Motor de Conhecimento
 Definição do papel do SOE-CCG: sistema capaz de registrar, organizar, relacionar, evoluir e consultar conhecimento gastronômico ao longo de décadas.
+
+## Estado
+Fase do ciclo de vida de um Registro. Define o que pode ser feito com ele e como deve ser tratado pelo sistema (ex: rascunho, ativo, arquivado).
+
+## Arquivamento
+Transição de um Registro para estado inativo sem exclusão física. O Registro permanece acessível para consulta e referência histórica.
