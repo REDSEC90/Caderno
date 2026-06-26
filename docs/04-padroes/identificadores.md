@@ -42,10 +42,10 @@ docs/04-padroes/identificadores.md  ← este arquivo
 | Prefixo | Último ID utilizado |
 |---------|---------------------|
 | `REC`   | REC-000001          |
-| `EXE`   | —                   |
-| `ING`   | —                   |
-| `TEC`   | —                   |
-| `EQP`   | —                   |
-| `OBS`   | —                   |
+| `EXE`   | EXE-000001          |
+| `ING`   | ING-000004          |
+| `TEC`   | TEC-000003          |
+| `EQP`   | EQP-000002          |
+| `OBS`   | OBS-000001          |
 | `EXP`   | —                   |
-| `CAT`   | —                   |
+| `CAT`   | CAT-000010          |

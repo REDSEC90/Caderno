@@ -3,22 +3,19 @@ id: OBS-000000
 tipo: observacao
 schema-version: 1
 versao: 1
+status: ativo
 criado-em: YYYY-MM-DD
 atualizado-em: YYYY-MM-DD
 autor: 
+entidade-referenciada: 
+tipo-entidade: 
+relevancia: 
 tags: []
 ---
 
-# Observação — [contexto resumido]
+# [Título da Observação]
 
-## Referência
-
-- **Entidade:** [ID da entidade vinculada]
-- **Tipo da entidade:** receita | execucao | ingrediente | tecnica | equipamento | experimento
-
-## Conteúdo
-
-[Texto da observação.]
+[Conteúdo da observação.]
 
 ## Notas
 

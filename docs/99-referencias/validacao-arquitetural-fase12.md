@@ -99,15 +99,15 @@
 ### Contratos
 
 - [x] Template canônico de contrato — estrutura formal definida
-- [ ] Contrato formal individual: Receita
-- [ ] Contrato formal individual: Ingrediente
-- [ ] Contrato formal individual: Técnica
-- [ ] Contrato formal individual: Equipamento
-- [ ] Contrato formal individual: Execução
-- [ ] Contrato formal individual: Observação
-- [ ] Contrato formal individual: Experimento
+- [x] Contrato formal individual: Receita
+- [x] Contrato formal individual: Ingrediente
+- [x] Contrato formal individual: Técnica
+- [x] Contrato formal individual: Equipamento
+- [x] Contrato formal individual: Execução
+- [x] Contrato formal individual: Observação
+- [x] Contrato formal individual: Experimento
 
-**Status:** 🟡 Parcial — template existe; contratos individuais pendentes
+**Status:** ✅ Completa — todos os contratos formalizados
 
 ---
 
@@ -234,28 +234,38 @@
 **Avaliação:** As principais ambiguidades foram eliminadas:
 - Todo termo tem uma definição única (Linguagem)
 - Toda entidade tem responsabilidades e limites claros (Especificações)
-- Toda operação tem pré e pós-condições definidas (Casos de uso)
+- Toda operação tem pré e pós-condições definidas (Casos de uso e Contratos)
 - Todo conflito tem regra de resolução (Política de Conflito)
+- Todos os contratos formais foram concluídos (7 entidades com contratos vinculantes)
 
-**Ambiguidades residuais:** contratos formais individuais (Fase 5 incompleta) deixam algumas pré/pós-condições implícitas nas especificações em vez de formalizadas como contrato vinculante.
+**Ambiguidades residuais:** Nenhuma ambiguidade arquitetural bloqueadora identificada.
 
 ### Um desenvolvedor externo consegue implementar?
 
-**Avaliação:** Sim, com restrições.
+**Avaliação:** Sim.
 
 O desenvolvedor consegue implementar:
 - A estrutura de arquivos Markdown em `dados/`
 - O esquema SQLite (schema fornecido)
 - O importador/sincronizador Markdown → SQLite
-- A validação de esquemas
-- As operações básicas de CRUD com arquivamento
+- A validação de esquemas contra contratos formais
+- As operações de CRUD com todas as pré/pós-condições formalizadas
 - Os relacionamentos entre entidades
+- A aplicação de todas as invariantes e rejeições explícitas
 
 Não está completamente especificado:
 - Interface/API (fase 13 — intencionalmente não iniciada)
 - Motor de importação automática (algoritmo de parse)
 
-**Conclusão:** implementabilidade da fundação: ~85%. Suficiente para iniciar Fase 13.
+**Conclusão:** implementabilidade da fundação: ~95%. Pronto para Fase 13.
+
+---
+
+## Status Final — Especificação Completa
+
+**Fase 0 a 12:** ✅ Completas  
+**Contratos formais:** ✅ 7/7 entidades com contratos vinculantes  
+**Bloqueadores:** Nenhum
 
 ---
 

@@ -7,36 +7,52 @@ status: registrada
 criado-em: YYYY-MM-DD
 atualizado-em: YYYY-MM-DD
 autor: 
+receita-id: REC-000000
+data-execucao: YYYY-MM-DD
+hora-inicio: 
+hora-fim: 
+tempo-total: 
+avaliacao-geral: 
+avaliacao-sabor: 
+avaliacao-textura: 
+avaliacao-aparencia: 
 tags: []
 ---
 
 # Execução — [Título da Receita]
 
-## Referência
+## Ingredientes Utilizados
 
-- **Receita:** REC-000000
-- **Versão da receita:** 
-- **Data de execução:** YYYY-MM-DD
+| ID         | Nome   | Quantidade | Unidade |
+|------------|--------|------------|---------|
+| ING-000000 | [nome] |            |         |
 
-## Resultado
+## Técnicas Aplicadas
 
-- **Avaliação geral:** otimo | bom | regular | ruim
-- **Descrição:** [Descrição qualitativa do resultado.]
+| ID         | Nome   |
+|------------|--------|
+| TEC-000000 | [nome] |
 
-## Variações
+## Equipamentos Utilizados
 
-[Alterações feitas em relação à receita original, se houver.]
+| ID         | Nome   |
+|------------|--------|
+| EQP-000000 | [nome] |
 
 ## Métricas
 
-| Métrica        | Valor | Unidade |
-|----------------|-------|---------|
-|                |       |         |
+| Métrica | Valor | Unidade |
+|---------|-------|---------|
+|         |       |         |
 
-## Observações
+## Resultado
 
-[IDs de observações vinculadas ou notas livres.]
+[Descrição qualitativa do resultado.]
+
+## Desvios em Relação à Receita
+
+[Alterações feitas em relação à receita original, se houver.]
 
 ## Notas
 
-[Notas livres sobre esta execução.]
+[Notas livres.]
