@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-06-27T03:02:00.248660+00:00",
-  "score": 100.0,
+  "timestamp": "2026-06-27T03:15:35.004435+00:00",
+  "score": 95.8,
   "decision": "APPROVED",
-  "trend": "improving",
+  "trend": "degrading",
   "baseline": {
     "present": 71,
     "total": 71,
@@ -32,13 +32,23 @@
     "Integridade": 100.0,
     "Padrões": 100.0,
     "Escalabilidade": 100.0,
-    "Dependências": 100.0
+    "Dependências": 50.0
   },
   "issues": {
-    "critical": [],
+    "critical": [
+      {
+        "id": "DEP-002",
+        "motor": "Dependências",
+        "severity": "CRITICA",
+        "title": "Ciclo detectado: REC-000001 → OBS-000001 → EXE-000001 → REC-000001",
+        "suggestions": [
+          "Revisar relacionamentos para eliminar dependência circular"
+        ]
+      }
+    ],
     "warnings": [],
     "counts": {
-      "critical": 0,
+      "critical": 1,
       "warnings": 0
     }
   },

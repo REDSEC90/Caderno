@@ -54,11 +54,11 @@ _MOTORES_V1 = {
     "cobertura":     _HERE / "motores" / "cobertura_v1.py",
     "maturidade":    _HERE / "motores" / "maturidade_v1.py",
     "semantica":     _HERE / "motores" / "semantica_v1.py",
-    "dados":         _HERE / "motores" / "dados.py",
-    "integridade":   _HERE / "motores" / "integridade.py",
+    "dados":         _HERE / "motores" / "dados-v2.py",
+    "integridade":   _HERE / "motores" / "integridade-v2.py",
     "padroes":       _HERE / "motores" / "padroes.py",
     "escalabilidade":_HERE / "motores" / "escalabilidade.py",
-    "dependencias":  _HERE / "motores" / "dependencias.py",
+    "dependencias":  _HERE / "motores" / "dependencias-v2.py",
 }
 _LEGADOS = {"dados", "integridade", "padroes", "escalabilidade", "dependencias"}
 
