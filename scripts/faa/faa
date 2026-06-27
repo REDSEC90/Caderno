@@ -1,0 +1,134 @@
+#!/usr/bin/env python3
+"""
+FAA v2 — Framework de Auditoria Arquitetural
+=============================================
+Sistema de governança arquitetural contínua: observar → entender → propor ação
+
+Uso:
+    faa status              # status unificado (substitui tree/ls)
+    faa validate            # auditoria completa
+    faa issues              # lista problemas
+    faa issues --critical   # apenas críticos
+    faa plan                # roadmap de ações
+    faa snapshot            # salva snapshot histórico
+    faa state               # exibe estado visual
+    faa state --json        # JSON puro para agentes
+"""
+
+import sys
+import argparse
+import json
+from pathlib import Path
+
+# Setup path
+_HERE = Path(__file__).parent
+sys.path.insert(0, str(_HERE))
+
+from core.orchestrator import FAA
+from config import CONFIG
+from observability.report_console import print_status, print_issues, print_plan, print_roadmap
+
+def cmd_validate(args):
+    """Executa auditoria completa"""
+    faa = FAA()
+    state = faa.run(save_snapshot_flag=args.snapshot)
+    
+    if not args.quiet:
+        print_status(state)
+    
+    # Exit code baseado em decisão
+    if state["metrics"]["decision"] == "BLOCKED":
+        sys.exit(1)
+
+def cmd_status(args):
+    """Status unificado do sistema"""
+    faa = FAA()
+    state = faa.status()
+    
+    if args.json:
+        print(json.dumps(state, indent=2))
+    else:
+        print_status(state)
+
+def cmd_issues(args):
+    """Lista issues"""
+    faa = FAA()
+    state = faa.status()
+    print_issues(state, critical_only=args.critical)
+
+def cmd_plan(args):
+    """Exibe plano de ação"""
+    faa = FAA()
+    state = faa.status()
+    print_plan(state)
+
+def cmd_roadmap(args):
+    """Exibe roadmap estruturado"""
+    faa = FAA()
+    state = faa.status()
+    print_roadmap(state)
+
+def cmd_snapshot(args):
+    """Cria snapshot histórico"""
+    faa = FAA()
+    state = faa.run(save_snapshot_flag=True)
+    print(f"✅ Snapshot salvo em {CONFIG.snapshot_dir}")
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="FAA v2 — Sistema de Governança Arquitetural",
+        formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    
+    subparsers = parser.add_subparsers(dest="command", help="Comandos disponíveis")
+    
+    # validate
+    p_validate = subparsers.add_parser("validate", help="Auditoria completa")
+    p_validate.add_argument("--snapshot", action="store_true", help="Salvar snapshot")
+    p_validate.add_argument("-q", "--quiet", action="store_true", help="Sem output visual")
+    
+    # status
+    p_status = subparsers.add_parser("status", help="Status unificado")
+    p_status.add_argument("--json", action="store_true", help="Saída JSON")
+    
+    # issues
+    p_issues = subparsers.add_parser("issues", help="Lista problemas")
+    p_issues.add_argument("--critical", action="store_true", help="Apenas críticos")
+    
+    # plan
+    subparsers.add_parser("plan", help="Roadmap de ações")
+    
+    # roadmap
+    subparsers.add_parser("roadmap", help="Roadmap estruturado (epics + tasks)")
+    
+    # snapshot
+    subparsers.add_parser("snapshot", help="Criar snapshot")
+    
+    # state (alias para status)
+    p_state = subparsers.add_parser("state", help="Estado do sistema")
+    p_state.add_argument("--json", action="store_true", help="Saída JSON")
+    
+    args = parser.parse_args()
+    
+    # Comando padrão
+    if not args.command:
+        args.command = "status"
+    
+    # Dispatch
+    commands = {
+        "validate": cmd_validate,
+        "status": cmd_status,
+        "state": cmd_status,  # alias
+        "issues": cmd_issues,
+        "plan": cmd_plan,
+        "roadmap": cmd_roadmap,
+        "snapshot": cmd_snapshot
+    }
+    
+    if args.command in commands:
+        commands[args.command](args)
+    else:
+        parser.print_help()
+
+if __name__ == "__main__":
+    main()

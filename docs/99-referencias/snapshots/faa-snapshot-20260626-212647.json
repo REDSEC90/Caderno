@@ -1,0 +1,285 @@
+{
+  "metrics": {
+    "score": 87.17,
+    "integrity": 90.0,
+    "decision": "DEGRADED",
+    "total_files": 187,
+    "health": "WARNING",
+    "coverage": {
+      "documentation": 106,
+      "data": 15,
+      "schema": 0
+    }
+  },
+  "structure": {
+    "files_by_category": {
+      "documentation": 106,
+      "data": 15,
+      "schema": 0,
+      "automation": 64,
+      "other": 2
+    },
+    "total_files": 187,
+    "missing_dirs": [
+      "docs/03-especificacoes"
+    ],
+    "missing_critical_files": [],
+    "health": "WARNING"
+  },
+  "issues": {
+    "critical": [],
+    "warnings": [
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/02-arquitetura/diagrama-mestre-v0_5.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/06-operacao/guia-operacao-v0_5.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/05-desenvolvimento/padroes-desenvolvimento-v0_5.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/05-desenvolvimento/casos-de-uso-v0_5.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/rastreamento-atualizado-v0_5.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/MIGRATION_INVENTORY-v0_5.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/MIGRATION_COMPLETE-v0_5.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/auditoria-v1-2026-06-26.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/ESTADO_ATUAL_DO_SISTEMA-v0_5.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/tarefas-desbloqueio-v0_5.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/MIGRATION_CLASSIFICATION-v0_5.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/rastreamento-roadmap-v0_5.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/FAA-v1-RELATORIO-FINAL.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/validacao-arquitetural-fase12-v0_5.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/MATRIZ_DE_VALIDACAO_ARQUITETURAL-v0_5.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/relatorio-execucao-2026-06-26-v0_5.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/faa-state.json",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/FAA-v1-CONCLUSAO.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/specification-freeze-v1-v0_5.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/roadmap-maturidade-arquitetural-v0_5.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/snapshots/faa-snapshot-20260626-211835.json",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/snapshots/faa-snapshot-20260626-212633.json",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/snapshots/faa-snapshot-20260626-212435.json",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/99-referencias/snapshots/faa-snapshot-20260626-212613.json",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      }
+    ],
+    "info": [],
+    "counts": {
+      "critical": 0,
+      "warnings": 24,
+      "info": 0
+    }
+  },
+  "plan": {
+    "total_tasks": 24,
+    "critical_tasks": 0,
+    "tasks": [
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "docs/02-arquitetura/diagrama-mestre-v0_5.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "docs/06-operacao/guia-operacao-v0_5.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "docs/05-desenvolvimento/padroes-desenvolvimento-v0_5.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "docs/05-desenvolvimento/casos-de-uso-v0_5.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "docs/99-referencias/rastreamento-atualizado-v0_5.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "docs/99-referencias/MIGRATION_INVENTORY-v0_5.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "docs/99-referencias/MIGRATION_COMPLETE-v0_5.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "docs/99-referencias/auditoria-v1-2026-06-26.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "docs/99-referencias/ESTADO_ATUAL_DO_SISTEMA-v0_5.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "docs/99-referencias/tarefas-desbloqueio-v0_5.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      }
+    ],
+    "status": "READY"
+  }
+}

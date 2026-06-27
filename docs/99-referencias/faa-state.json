@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-06-26T21:03:02.493099+00:00",
+  "timestamp": "2026-06-27T03:02:00.248660+00:00",
   "score": 100.0,
   "decision": "APPROVED",
-  "trend": "stable",
+  "trend": "improving",
   "baseline": {
     "present": 71,
     "total": 71,

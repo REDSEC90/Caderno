@@ -117,13 +117,13 @@ BASELINE_V1: dict[str, Path] = {
     "esquema-observacao":    ESQUEMAS / "esquema-observacao-v1.md",
     "esquema-experimento":   ESQUEMAS / "esquema-experimento-v1.md",  # ausência real
     # Linguagem e catálogos
-    "linguagem":             DOCS / "01-dominio" / "linguagem-soe-ccg-v0_5.md",
-    "separacao-dominios":    DOCS / "01-dominio" / "separacao-dominios-v0_5.md",
+    "linguagem":             DOCS / "01-dominio" / "linguagem-soe-ccg-v1.md",
+    "separacao-dominios":    DOCS / "01-dominio" / "separacao-dominios-v1.md",
     "mapa-relacionamentos":  DOCS / "01-dominio" / "mapa-relacionamentos-v1.md",
     "ciclo-de-vida":         DOCS / "01-dominio" / "ciclo-de-vida-v1.md",
     "entidades":             DOCS / "01-dominio" / "entidades-v1.md",
-    "estados-todas-entidades": CATALOGOS / "estados-todas-entidades-v0_5.md",
-    "categorias":            CATALOGOS / "categorias-v0_5.md",
+    "estados-todas-entidades": CATALOGOS / "estados-todas-entidades-v1.md",
+    "categorias":            CATALOGOS / "categorias-v1.md",
     # Padrões de governança
     "identificadores":       PADROES / "identificadores-v1.md",
     "nomenclatura":          PADROES / "nomenclatura-v1.md",
@@ -147,9 +147,9 @@ BASELINE_V1: dict[str, Path] = {
     "schema-sqlite":         BANCO / "esquemas" / "schema-sqlite-v1.sql",
     "seed-categorias":       BANCO / "seeds" / "seed-categorias.sql",
     # Desenvolvimento e operação
-    "casos-de-uso":          DOCS / "05-desenvolvimento" / "casos-de-uso-v0_5.md",
-    "padroes-desenvolvimento": DOCS / "05-desenvolvimento" / "padroes-desenvolvimento-v0_5.md",
-    "guia-operacao":         DOCS / "06-operacao" / "guia-operacao-v0_5.md",
+    "casos-de-uso":          DOCS / "05-desenvolvimento" / "casos-de-uso-v1.md",
+    "padroes-desenvolvimento": DOCS / "05-desenvolvimento" / "padroes-desenvolvimento-v1.md",
+    "guia-operacao":         DOCS / "06-operacao" / "guia-operacao-v1.md",
 }
 
 # ─── GRUPOS de maturidade e seus limiares de aprovação ───────────────────────

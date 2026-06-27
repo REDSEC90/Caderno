@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-06-26T21:27:14.688271+00:00",
+  "score": 88.36,
+  "decision": "DEGRADED",
+  "integrity": 90.0,
+  "coverage": {
+    "documentation": 107,
+    "data": 15,
+    "schema": 0
+  },
+  "issues": {
+    "critical": 0,
+    "warnings": 22,
+    "info": 0
+  },
+  "status": "READY"
+}
