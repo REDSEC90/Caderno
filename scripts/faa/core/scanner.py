@@ -31,13 +31,13 @@ def _classify(path: Path, root: Path) -> FileNode:
     """Classifica arquivo por categoria"""
     rel = str(path.relative_to(root))
     
-    # Classificação por caminho
+    # Classificação por caminho — ordem importa: mais específico primeiro
     if "docs/" in rel:
         cat = "documentation"
-    elif "dados/" in rel:
-        cat = "data"
     elif "banco_de_dados/" in rel:
         cat = "schema"
+    elif "dados/" in rel:
+        cat = "data"
     elif "scripts/" in rel:
         cat = "automation"
     else:

@@ -4,6 +4,7 @@ tipo: execucao
 schema-version: 1
 versao: 1
 status: consolidada
+receita-id: REC-000001
 criado-em: 2026-06-25
 atualizado-em: 2026-06-26
 autor: sistema

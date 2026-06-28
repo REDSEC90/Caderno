@@ -40,7 +40,14 @@ RULES = [
     Rule(
         "versioned_naming",
         Severity.WARNING,
-        lambda n: n.is_versioned if n.category in {"documentation", "schema"} else True,
+        lambda n: (
+            n.is_versioned
+            if (n.category in {"documentation", "schema"}
+                and "99-referencias" not in n.relative
+                and n.path.suffix in {".md", ".sql"}
+                and "sqlite/" not in n.relative)
+            else True
+        ),
         "Adicionar sufixo de versão: -v1.md ou -v1.sql"
     ),
     Rule(

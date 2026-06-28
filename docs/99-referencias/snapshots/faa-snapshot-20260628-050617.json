@@ -1,27 +1,26 @@
 {
-  "version": "2.0",
-  "timestamp": "2026-06-28T05:26:21.204080+00:00",
   "metrics": {
     "score": 100.0,
     "integrity": 90.0,
     "decision": "APPROVED",
-    "total_files": 283,
+    "total_files": 281,
     "health": "WARNING",
     "coverage": {
-      "documentation": 161,
-      "data": 12,
-      "schema": 4
+      "documentation": 126,
+      "data": 15,
+      "schema": 0
     }
   },
   "structure": {
     "files_by_category": {
-      "documentation": 161,
-      "data": 12,
-      "schema": 4,
+      "documentation": 126,
+      "data": 15,
+      "schema": 0,
       "automation": 70,
-      "other": 36
+      "other": 36,
+      "reference": 34
     },
-    "total_files": 283,
+    "total_files": 281,
     "missing_dirs": [
       "docs/03-especificacoes"
     ],
