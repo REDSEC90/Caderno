@@ -5,9 +5,6 @@ eliminando o falso-negativo "SEM DADOS" quando todos os registros são corretos.
 Corrige B-07: datas aceitas como type date nativo do yaml (python-frontmatter).
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 from models import AuditResult, MotorResult, Status, Severidade
 from config import ROOT, PREFIXOS, METADADOS_OBRIGATORIOS, ESTADOS_VALIDOS, ID_PATTERN, DATE_PATTERN
 from utils import ler_frontmatter, listar_md

@@ -3,9 +3,6 @@ Motor 1 — Estrutura
 Verifica pastas, localização de arquivos, nomes, extensões e arquivos fora do lugar.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 from pathlib import Path
 from models import AuditResult, MotorResult, Status, Severidade
 from config import ROOT, DADOS, DOCS, BANCO, SCRIPTS, PREFIXOS, ENTIDADES
@@ -31,15 +28,16 @@ DIRETORIOS_ESPERADOS = [
 ]
 
 ARQUIVOS_ESPERADOS = [
-    DOCS / "00-projeto" / "filosofia.md",
-    DOCS / "00-projeto" / "constituicao.md",
-    DOCS / "00-projeto" / "principios.md",
-    DOCS / "00-projeto" / "glossario.md",
-    DOCS / "01-dominio" / "linguagem-soe-ccg.md",
-    DOCS / "01-dominio" / "mapa-relacionamentos.md",
-    DOCS / "01-dominio" / "separacao-dominios.md",
-    DOCS / "04-padroes" / "identificadores.md",
+    DOCS / "00-projeto" / "filosofia-v1.md",
+    DOCS / "00-projeto" / "constituicao-v1.md",
+    DOCS / "00-projeto" / "principios-v1.md",
+    DOCS / "00-projeto" / "glossario-v1.md",
+    DOCS / "01-dominio" / "linguagem-soe-ccg-v1.md",
+    DOCS / "01-dominio" / "mapa-relacionamentos-v1.md",
+    DOCS / "01-dominio" / "separacao-dominios-v1.md",
+    DOCS / "04-padroes" / "identificadores-v1.md",
     BANCO / "esquemas" / "schema-sqlite-v1.sql",
+    BANCO / "seeds" / "seed-categorias-v1.sql",
 ]
 
 import re

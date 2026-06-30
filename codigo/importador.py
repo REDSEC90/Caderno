@@ -20,8 +20,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .ir import KnowledgeGraph
+from kernel.shared.paths import ROOT
 
-ROOT     = Path(__file__).parent.parent
 SCHEMA   = ROOT / 'banco_de_dados' / 'esquemas' / 'schema-sqlite-v1.sql'
 DB_PATH  = ROOT / 'banco_de_dados' / 'sqlite' / 'soe-ccg.db'
 

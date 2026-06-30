@@ -3,9 +3,6 @@ Motor Maturidade v1
 Pontua cada camada arquitetural usando BASELINE_V1 (caminhos reais com sufixo de versão).
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 from models_v1 import AuditResult, MotorResult, Status, Severidade
 from config_v1 import BASELINE_V1, GRUPOS_BASELINE, LIMIAR_APROVACAO, PREFIXOS, ROOT
 

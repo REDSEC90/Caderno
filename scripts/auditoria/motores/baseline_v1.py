@@ -10,9 +10,6 @@ Lógica:
   - Sistema APROVADO somente se TODOS os grupos atingem seu limiar.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 from models_v1 import AuditResult, MotorResult, Status, Severidade, DecisaoArquitetural
 from config_v1 import ROOT, BASELINE_V1, GRUPOS_BASELINE, LIMIAR_APROVACAO
 

@@ -4,9 +4,6 @@ Corrige B-06: varre o corpo do arquivo Markdown em busca de IDs além do frontma
 tornando visíveis referências em tabelas, listas e texto corrido.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 import re
 from models import AuditResult, MotorResult, Status, Severidade
 from config import ROOT, PREFIXOS, ID_PATTERN

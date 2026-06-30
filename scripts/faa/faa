@@ -20,9 +20,17 @@ import argparse
 import json
 from pathlib import Path
 
-# Setup path
-_HERE = Path(__file__).parent
-sys.path.insert(0, str(_HERE))
+_PROJECT_ROOT_FOR_IMPORT = Path(__file__).resolve().parents[2]
+if str(_PROJECT_ROOT_FOR_IMPORT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT_FOR_IMPORT))
+
+from kernel.bootstrap import bootstrap_system
+from kernel.shared.paths import SCRIPTS_FAA
+
+bootstrap_system()
+
+if str(SCRIPTS_FAA) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_FAA))
 
 from core.orchestrator import FAA
 from config import CONFIG

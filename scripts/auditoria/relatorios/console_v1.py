@@ -3,9 +3,6 @@ Relatórios do FAA v1 — console e Markdown.
 Exibe veredicto de baseline (APROVADO/REPROVADO) como decisão arquitetural central.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 from datetime import datetime
 from models_v1 import AuditResult, MotorResult, Status
 from config_v1 import ROOT, DOCS

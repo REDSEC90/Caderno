@@ -1,9 +1,14 @@
 """FAA v2 — Configuração central"""
+import sys
 from pathlib import Path
 from dataclasses import dataclass
 import re
 
-ROOT = Path(__file__).parent.parent.parent
+_PROJECT_ROOT_FOR_IMPORT = Path(__file__).resolve().parents[2]
+if str(_PROJECT_ROOT_FOR_IMPORT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT_FOR_IMPORT))
+
+from kernel.shared.paths import ROOT
 
 @dataclass
 class FAAConfig:

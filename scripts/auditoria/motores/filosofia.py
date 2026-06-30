@@ -3,9 +3,6 @@ Motor 2 — Filosofia
 Verifica presença e completude dos documentos filosóficos fundacionais.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 from models import AuditResult, MotorResult, Status, Severidade
 from config import DOCS, ROOT
 
@@ -37,14 +34,14 @@ def _verificar_secoes(path, secoes_esperadas, id_resultado, motor_nome, resultad
 def executar() -> MotorResult:
     resultado = MotorResult(nome="Filosofia")
 
-    # Axiomas em filosofia.md
+    # Axiomas em filosofia-v1.md
     _verificar_secoes(
-        DOCS / "00-projeto" / "filosofia.md",
+        DOCS / "00-projeto" / "filosofia-v1.md",
         AXIOMAS, "FIL-001", "Filosofia", resultado,
     )
 
-    # Leis em constituicao.md (verifica pela numeração no texto)
-    constituicao = DOCS / "00-projeto" / "constituicao.md"
+    # Leis em constituicao-v1.md (verifica pela numeração no texto)
+    constituicao = DOCS / "00-projeto" / "constituicao-v1.md"
     if constituicao.exists():
         texto = constituicao.read_text(encoding="utf-8")
         leis_encontradas = sum(1 for i in range(1, 11) if f"{i}." in texto or f"Lei {i}" in texto)
@@ -53,11 +50,11 @@ def executar() -> MotorResult:
             id="FIL-002", motor="Filosofia",
             titulo=f"Constituição: {leis_encontradas}/10 leis encontradas",
             status=status, severidade=Severidade.INFO if status == Status.PASS else Severidade.MEDIA,
-            evidencias=["docs/00-projeto/constituicao.md"],
+            evidencias=["docs/00-projeto/constituicao-v1.md"],
         ))
 
     # Princípios
-    principios = DOCS / "00-projeto" / "principios.md"
+    principios = DOCS / "00-projeto" / "principios-v1.md"
     if principios.exists():
         texto = principios.read_text(encoding="utf-8")
         count = texto.count("\n## ")
@@ -69,7 +66,7 @@ def executar() -> MotorResult:
         ))
 
     # Glossário existe e tem conteúdo
-    glossario = DOCS / "00-projeto" / "glossario.md"
+    glossario = DOCS / "00-projeto" / "glossario-v1.md"
     if glossario.exists():
         linhas = len(glossario.read_text(encoding="utf-8").splitlines())
         status = Status.PASS if linhas > 20 else Status.WARN
@@ -77,7 +74,7 @@ def executar() -> MotorResult:
             id="FIL-004", motor="Filosofia",
             titulo=f"Glossário: {linhas} linhas",
             status=status, severidade=Severidade.INFO,
-            evidencias=["docs/00-projeto/glossario.md"],
+            evidencias=["docs/00-projeto/glossario-v1.md"],
         ))
 
     return resultado

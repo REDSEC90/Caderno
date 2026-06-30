@@ -3,9 +3,6 @@ Motor 10 — Escalabilidade
 Simula crescimento massivo e verifica se IDs, estrutura e referências continuam válidos.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 import re
 from models import AuditResult, MotorResult, Status, Severidade
 from config import ROOT, PREFIXOS
@@ -25,7 +22,7 @@ def executar() -> MotorResult:
             id="ESC-001", motor="Escalabilidade",
             titulo=f"ID {prefixo}-NNNNNN suporta até {ID_MAX_6_DIGITOS:,} registros",
             status=Status.PASS, severidade=Severidade.INFO,
-            evidencias=["docs/04-padroes/identificadores.md"],
+            evidencias=["docs/04-padroes/identificadores-v1.md"],
             sugestoes=[] if suporta else ["Avaliar expansão para 7 dígitos"],
         ))
 
@@ -61,7 +58,7 @@ def executar() -> MotorResult:
         id="ESC-004", motor="Escalabilidade",
         titulo="Relacionamentos por ID — renomeação não quebra referências",
         status=Status.PASS, severidade=Severidade.INFO,
-        evidencias=["docs/01-dominio/mapa-relacionamentos.md — Princípio de Referência"],
+        evidencias=["docs/01-dominio/mapa-relacionamentos-v1.md — Princípio de Referência"],
     ))
 
     # 5. Schema SQLite tem índices para os campos de busca frequente?

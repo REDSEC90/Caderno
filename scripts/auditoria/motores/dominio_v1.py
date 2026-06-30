@@ -4,9 +4,6 @@ Verifica se cada entidade possui contrato, template, especificação e esquema.
 Usa BASELINE_V1 para resolução de caminhos reais.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 from models_v1 import AuditResult, MotorResult, Status, Severidade
 from config_v1 import ROOT, BASELINE_V1, ENTIDADES, CATALOGOS
 

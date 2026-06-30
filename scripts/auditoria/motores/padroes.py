@@ -3,9 +3,6 @@ Motor 9 — Padrões
 Verifica nomenclatura de arquivos, encoding, formato de datas e convenções de IDs em dados/.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 import re
 from models import AuditResult, MotorResult, Status, Severidade
 from config import ROOT, PREFIXOS, ID_PATTERN

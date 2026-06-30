@@ -3,9 +3,6 @@ Motor 13 — Maturidade
 Pontua cada camada da arquitetura de 0 a 100 com base na presença de artefatos.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 from models import AuditResult, MotorResult, Status, Severidade
 from config import DOCS, ROOT, ENTIDADES, PREFIXOS, BANCO
 
@@ -36,12 +33,12 @@ def executar() -> MotorResult:
 
     # Arquitetura (documentos fundacionais)
     arq_itens = [
-        ("filosofia.md",    (DOCS / "00-projeto" / "filosofia.md").exists()),
-        ("constituicao.md", (DOCS / "00-projeto" / "constituicao.md").exists()),
-        ("principios.md",   (DOCS / "00-projeto" / "principios.md").exists()),
-        ("glossario.md",    (DOCS / "00-projeto" / "glossario.md").exists()),
-        ("linguagem",       (DOCS / "01-dominio" / "linguagem-soe-ccg.md").exists()),
-        ("separacao-dominos", (DOCS / "01-dominio" / "separacao-dominios.md").exists()),
+        ("filosofia-v1.md",    (DOCS / "00-projeto" / "filosofia-v1.md").exists()),
+        ("constituicao-v1.md", (DOCS / "00-projeto" / "constituicao-v1.md").exists()),
+        ("principios-v1.md",   (DOCS / "00-projeto" / "principios-v1.md").exists()),
+        ("glossario-v1.md",    (DOCS / "00-projeto" / "glossario-v1.md").exists()),
+        ("linguagem-v1",       (DOCS / "01-dominio" / "linguagem-soe-ccg-v1.md").exists()),
+        ("separacao-dominios-v1", (DOCS / "01-dominio" / "separacao-dominios-v1.md").exists()),
     ]
     pontuacoes["Arquitetura"] = _camada("MAT-001", "Arquitetura", arq_itens, resultado)
 
@@ -49,7 +46,7 @@ def executar() -> MotorResult:
     dom_itens = []
     for e in ENTIDADES:
         dom_itens += [
-            (f"{e}/especificacao", (DOCS / "01-dominio" / f"especificacao-{e}.md").exists()),
+            (f"{e}/especificacao", (DOCS / "01-dominio" / f"especificacao-{e}-v1.md").exists()),
             (f"{e}/contrato",      (DOCS / "01-dominio" / "contratos" / f"contrato-{e}-v1.md").exists()),
             (f"{e}/template",      (DOCS / "01-dominio" / "templates" / f"{e}-v1.md").exists()),
             (f"{e}/esquema",       (DOCS / "01-dominio" / "esquemas" / f"esquema-{e}-v1.md").exists()),
@@ -58,21 +55,21 @@ def executar() -> MotorResult:
 
     # Documentação
     doc_itens = [
-        ("mapa-relacionamentos", (DOCS / "01-dominio" / "mapa-relacionamentos.md").exists()),
-        ("estados-todas-entidades", (DOCS / "01-dominio" / "catalogos" / "estados-todas-entidades.md").exists()),
-        ("casos-de-uso",  (DOCS / "05-desenvolvimento" / "casos-de-uso.md").exists()),
-        ("validacao-arq", (DOCS / "99-referencias" / "validacao-arquitetural-fase12.md").exists()),
-        ("spec-freeze",   (DOCS / "99-referencias" / "specification-freeze-v1.md").exists()),
-        ("matriz-vaf",    (DOCS / "99-referencias" / "MATRIZ_DE_VALIDACAO_ARQUITETURAL.md").exists()),
-        ("estado-sistema",(DOCS / "99-referencias" / "ESTADO_ATUAL_DO_SISTEMA.md").exists()),
+        ("mapa-relacionamentos", (DOCS / "01-dominio" / "mapa-relacionamentos-v1.md").exists()),
+        ("estados-todas-entidades", (DOCS / "01-dominio" / "catalogos" / "estados-todas-entidades-v1.md").exists()),
+        ("casos-de-uso",  (DOCS / "05-desenvolvimento" / "casos-de-uso-v1.md").exists()),
+        ("roadmap-consolidacao", (DOCS / "99-referencias" / "roadmap-consolidacao-v1.md").exists()),
+        ("relatorio-consolidacao", (DOCS / "99-referencias" / "relatorio-consolidacao-v1-2026-06-26.md").exists()),
+        ("faa-v1-conclusao", (DOCS / "99-referencias" / "FAA-v1-CONCLUSAO.md").exists()),
+        ("fase-0-auditoria", (DOCS / "99-referencias" / "FASE-0-AUDITORIA-GERAL-2026-06-28.md").exists()),
     ]
     pontuacoes["Documentação"] = _camada("MAT-003", "Documentação", doc_itens, resultado)
 
     # Modelagem
     mod_itens = [
         ("schema-sqlite", (BANCO / "esquemas" / "schema-sqlite-v1.sql").exists()),
-        ("seed-categorias",(BANCO / "seeds" / "seed-categorias.sql").exists()),
-        ("conceitos-fundamentais", (DOCS / "03-modelagem" / "conceitos-fundamentais.md").exists()),
+        ("seed-categorias",(BANCO / "seeds" / "seed-categorias-v1.sql").exists()),
+        ("conceitos-fundamentais", (DOCS / "03-modelagem" / "conceitos-fundamentais-v1.md").exists()),
     ]
     pontuacoes["Modelagem"] = _camada("MAT-004", "Modelagem", mod_itens, resultado)
 

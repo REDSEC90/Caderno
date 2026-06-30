@@ -3,11 +3,16 @@ Configuração central do FAA v1.
 Todos os caminhos são relativos à raiz do projeto SOE-CCG.
 """
 
+import sys
 from pathlib import Path
 import re
 
-# Raiz do projeto — dois níveis acima de scripts/auditoria/
-ROOT = Path(__file__).parent.parent.parent.resolve()
+_PROJECT_ROOT_FOR_IMPORT = Path(__file__).resolve().parents[2]
+if str(_PROJECT_ROOT_FOR_IMPORT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT_FOR_IMPORT))
+
+# Raiz canônica do projeto.
+from kernel.shared.paths import ROOT
 
 # Diretórios principais
 DADOS       = ROOT / "dados"
@@ -132,13 +137,13 @@ BASELINE_V1: dict[str, Path] = {
     "esquema-experimento":  ESQUEMAS / "esquema-experimento-v1.md",
 
     # Domínio — catálogos e linguagem
-    "linguagem":             DOCS / "01-dominio" / "linguagem-soe-ccg-v0_5.md",
-    "separacao-dominios":    DOCS / "01-dominio" / "separacao-dominios-v0_5.md",
+    "linguagem":             DOCS / "01-dominio" / "linguagem-soe-ccg-v1.md",
+    "separacao-dominios":    DOCS / "01-dominio" / "separacao-dominios-v1.md",
     "mapa-relacionamentos":  DOCS / "01-dominio" / "mapa-relacionamentos-v1.md",
     "ciclo-de-vida":         DOCS / "01-dominio" / "ciclo-de-vida-v1.md",
     "entidades":             DOCS / "01-dominio" / "entidades-v1.md",
-    "estados-todas-entidades": CATALOGOS / "estados-todas-entidades-v0_5.md",
-    "categorias":            CATALOGOS / "categorias-v0_5.md",
+    "estados-todas-entidades": CATALOGOS / "estados-todas-entidades-v1.md",
+    "categorias":            CATALOGOS / "categorias-v1.md",
 
     # Padrões de governança
     "identificadores":       PADROES / "identificadores-v1.md",
@@ -163,12 +168,12 @@ BASELINE_V1: dict[str, Path] = {
 
     # Banco de dados
     "schema-sqlite":         BANCO / "esquemas" / "schema-sqlite-v1.sql",
-    "seed-categorias":       BANCO / "seeds" / "seed-categorias.sql",
+    "seed-categorias":       BANCO / "seeds" / "seed-categorias-v1.sql",
 
     # Desenvolvimento e operação
-    "casos-de-uso":          DOCS / "05-desenvolvimento" / "casos-de-uso-v0_5.md",
-    "padroes-desenvolvimento": DOCS / "05-desenvolvimento" / "padroes-desenvolvimento-v0_5.md",
-    "guia-operacao":         DOCS / "06-operacao" / "guia-operacao-v0_5.md",
+    "casos-de-uso":          DOCS / "05-desenvolvimento" / "casos-de-uso-v1.md",
+    "padroes-desenvolvimento": DOCS / "05-desenvolvimento" / "padroes-desenvolvimento-v1.md",
+    "guia-operacao":         DOCS / "06-operacao" / "guia-operacao-v1.md",
 }
 
 # ─── GRUPOS de maturidade (usados pelo motor de decisão) ────────────────────

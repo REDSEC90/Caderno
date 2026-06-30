@@ -4,9 +4,6 @@ Corrige B-06: grafo agora inclui referências do corpo Markdown além do frontma
 produzindo representação real do acoplamento entre registros.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 import re
 from models import AuditResult, MotorResult, Status, Severidade
 from config import ROOT, PREFIXOS, ID_PATTERN

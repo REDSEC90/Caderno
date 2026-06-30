@@ -4,9 +4,6 @@ Verifica presença e completude dos documentos filosóficos fundacionais.
 Usa BASELINE_V1 para resolução de caminhos.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 from models_v1 import AuditResult, MotorResult, Status, Severidade
 from config_v1 import ROOT, BASELINE_V1
 

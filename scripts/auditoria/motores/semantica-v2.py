@@ -4,9 +4,6 @@ Corrige B-02: contador de entradas do glossário usa headers ## em vez de pares 
 Corrige B-03: remoção da seção de termos proibidos usa próximo ## como delimitador real
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 import re
 from models import AuditResult, MotorResult, Status, Severidade
 from config import DOCS, ROOT

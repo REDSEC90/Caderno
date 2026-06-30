@@ -35,8 +35,17 @@ from pathlib import Path
 from datetime import datetime, timezone
 from dataclasses import dataclass, field, asdict
 
-_HERE = Path(__file__).parent
-sys.path.insert(0, str(_HERE))
+_PROJECT_ROOT_FOR_IMPORT = Path(__file__).resolve().parents[2]
+if str(_PROJECT_ROOT_FOR_IMPORT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT_FOR_IMPORT))
+
+from kernel.bootstrap import bootstrap_system
+from kernel.shared.paths import SCRIPTS_AUDITORIA
+
+bootstrap_system()
+
+if str(SCRIPTS_AUDITORIA) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_AUDITORIA))
 
 import importlib.util, types
 
@@ -47,18 +56,18 @@ def _importar_v1(nome_modulo: str, caminho: Path) -> types.ModuleType:
     return mod
 
 _MOTORES_V1 = {
-    "baseline":      _HERE / "motores" / "baseline_v1.py",
-    "estrutura":     _HERE / "motores" / "estrutura_v1.py",
-    "filosofia":     _HERE / "motores" / "filosofia_v1.py",
-    "dominio":       _HERE / "motores" / "dominio_v1.py",
-    "cobertura":     _HERE / "motores" / "cobertura_v1.py",
-    "maturidade":    _HERE / "motores" / "maturidade_v1.py",
-    "semantica":     _HERE / "motores" / "semantica_v1.py",
-    "dados":         _HERE / "motores" / "dados-v2.py",
-    "integridade":   _HERE / "motores" / "integridade-v2.py",
-    "padroes":       _HERE / "motores" / "padroes.py",
-    "escalabilidade":_HERE / "motores" / "escalabilidade.py",
-    "dependencias":  _HERE / "motores" / "dependencias-v2.py",
+    "baseline":      SCRIPTS_AUDITORIA / "motores" / "baseline_v1.py",
+    "estrutura":     SCRIPTS_AUDITORIA / "motores" / "estrutura_v1.py",
+    "filosofia":     SCRIPTS_AUDITORIA / "motores" / "filosofia_v1.py",
+    "dominio":       SCRIPTS_AUDITORIA / "motores" / "dominio_v1.py",
+    "cobertura":     SCRIPTS_AUDITORIA / "motores" / "cobertura_v1.py",
+    "maturidade":    SCRIPTS_AUDITORIA / "motores" / "maturidade_v1.py",
+    "semantica":     SCRIPTS_AUDITORIA / "motores" / "semantica_v1.py",
+    "dados":         SCRIPTS_AUDITORIA / "motores" / "dados-v2.py",
+    "integridade":   SCRIPTS_AUDITORIA / "motores" / "integridade-v2.py",
+    "padroes":       SCRIPTS_AUDITORIA / "motores" / "padroes.py",
+    "escalabilidade":SCRIPTS_AUDITORIA / "motores" / "escalabilidade.py",
+    "dependencias":  SCRIPTS_AUDITORIA / "motores" / "dependencias-v2.py",
 }
 _LEGADOS = {"dados", "integridade", "padroes", "escalabilidade", "dependencias"}
 
@@ -207,7 +216,10 @@ def cmd_run(args):
     records = _coletar_registros()
     resultados = _executar_motores(nomes)
     pct = _pontuacao_geral(resultados)
-    console_v1 = _importar_v1("relatorios.console_v1", _HERE / "relatorios" / "console_v1.py")
+    console_v1 = _importar_v1(
+        "relatorios.console_v1",
+        SCRIPTS_AUDITORIA / "relatorios" / "console_v1.py",
+    )
     console_v1.imprimir_console(resultados, pct)
     if args.relatorio:
         console_v1.gerar_markdown(resultados, pct)

@@ -10,7 +10,8 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).parent.parent
+from kernel.bootstrap import bootstrap_system
+from kernel.shared.paths import ROOT
 
 
 def _cmd_importar(args: list[str]) -> int:
@@ -116,6 +117,8 @@ Comandos:
 
 
 def main() -> None:
+    bootstrap_system()
+
     argv = sys.argv[1:]
     if not argv or argv[0] in ('-h', '--help'):
         print(_HELP)

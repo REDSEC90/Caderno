@@ -3,9 +3,6 @@ Motor 6 — Dados (Conhecimento)
 Percorre dados/ e verifica IDs, metadados, estados, referências e duplicidades.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 from models import AuditResult, MotorResult, Status, Severidade
 from config import ROOT, PREFIXOS, METADADOS_OBRIGATORIOS, ESTADOS_VALIDOS, ID_PATTERN, DATE_PATTERN
 from utils import ler_frontmatter, listar_md

@@ -3,9 +3,6 @@ Motor 11 — Dependências
 Monta o grafo de relacionamentos entre dados reais e detecta ciclos e dependências ocultas.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 from models import AuditResult, MotorResult, Status, Severidade
 from config import ROOT, PREFIXOS, ID_PATTERN
 from utils import ler_frontmatter, listar_md

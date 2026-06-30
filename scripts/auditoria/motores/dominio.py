@@ -3,16 +3,13 @@ Motor 3 — Domínio
 Verifica se cada entidade possui contrato, template, especificação, esquema e catálogo de estados.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 from models import AuditResult, MotorResult, Status, Severidade
 from config import DOCS, ROOT, ENTIDADES
 
 ARTEFATOS = {
     "template":      lambda e: DOCS / "01-dominio" / "templates" / f"{e}-v1.md",
     "contrato":      lambda e: DOCS / "01-dominio" / "contratos" / f"contrato-{e}-v1.md",
-    "especificacao": lambda e: DOCS / "01-dominio" / f"especificacao-{e}.md",
+    "especificacao": lambda e: DOCS / "01-dominio" / f"especificacao-{e}-v1.md",
     "esquema":       lambda e: DOCS / "01-dominio" / "esquemas" / f"esquema-{e}-v1.md",
 }
 
@@ -34,7 +31,7 @@ def executar() -> MotorResult:
             ))
 
     # Catálogo de estados consolidado
-    estados = DOCS / "01-dominio" / "catalogos" / "estados-todas-entidades.md"
+    estados = DOCS / "01-dominio" / "catalogos" / "estados-todas-entidades-v1.md"
     resultado.resultados.append(AuditResult(
         id="DOM-002", motor="Domínio",
         titulo=f"Catálogo de estados: {'presente' if estados.exists() else 'AUSENTE'}",
@@ -44,7 +41,7 @@ def executar() -> MotorResult:
     ))
 
     # Mapa de relacionamentos
-    mapa = DOCS / "01-dominio" / "mapa-relacionamentos.md"
+    mapa = DOCS / "01-dominio" / "mapa-relacionamentos-v1.md"
     resultado.resultados.append(AuditResult(
         id="DOM-003", motor="Domínio",
         titulo=f"Mapa de relacionamentos: {'presente' if mapa.exists() else 'AUSENTE'}",

@@ -3,9 +3,6 @@ Motor 12 — Cobertura
 Mede percentual de cobertura de contratos, templates, dados canônicos e documentação.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 from models import AuditResult, MotorResult, Status, Severidade
 from config import DOCS, ROOT, ENTIDADES, PREFIXOS
 
@@ -51,7 +48,7 @@ def executar() -> MotorResult:
 
     specs = sum(
         1 for e in ENTIDADES
-        if (DOCS / "01-dominio" / f"especificacao-{e}.md").exists()
+        if (DOCS / "01-dominio" / f"especificacao-{e}-v1.md").exists()
     )
     _resultado_cobertura("COB-003", "Cobertura", "Especificações", specs, total, resultado)
 
@@ -62,9 +59,9 @@ def executar() -> MotorResult:
     _resultado_cobertura("COB-004", "Cobertura", "Esquemas", esquemas, total, resultado)
 
     politicas_esperadas = [
-        "politica-templates.md", "politica-esquemas.md", "politica-arquivamento.md",
-        "politica-revisao.md", "politica-conflito.md",
-        "identificadores.md", "versionamento.md", "metadados.md",
+        "politica-templates-v1.md", "politica-esquemas-v1.md", "politica-arquivamento-v1.md",
+        "politica-revisao-v1.md", "politica-conflito-v1.md",
+        "identificadores-v1.md", "versionamento-v1.md", "metadados-v1.md",
     ]
     politicas = sum(1 for p in politicas_esperadas if (DOCS / "04-padroes" / p).exists())
     _resultado_cobertura("COB-005", "Cobertura", "Políticas de governança", politicas, len(politicas_esperadas), resultado)

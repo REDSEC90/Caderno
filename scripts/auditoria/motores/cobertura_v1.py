@@ -3,9 +3,6 @@ Motor Cobertura v1
 Mede percentual de cobertura por tipo de artefato usando BASELINE_V1.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 from models_v1 import AuditResult, MotorResult, Status, Severidade
 from config_v1 import BASELINE_V1, ENTIDADES, PREFIXOS
 

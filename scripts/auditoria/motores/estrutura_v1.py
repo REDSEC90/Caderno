@@ -4,9 +4,6 @@ Verifica diretórios obrigatórios, nomenclatura de arquivos em dados/ e arquivo
 Usa BASELINE_V1 como referência — resolve nomes com sufixo de versão correto.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 import re
 from models_v1 import AuditResult, MotorResult, Status, Severidade
 from config_v1 import ROOT, DADOS, DOCS, BANCO, PREFIXOS, BASELINE_V1, NOME_DADOS_PATTERN

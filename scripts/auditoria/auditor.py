@@ -15,8 +15,18 @@ import sys
 import argparse
 from pathlib import Path
 
-# Garante que imports internos funcionem a partir de qualquer diretório
-sys.path.insert(0, str(Path(__file__).parent))
+_PROJECT_ROOT_FOR_IMPORT = Path(__file__).resolve().parents[2]
+if str(_PROJECT_ROOT_FOR_IMPORT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT_FOR_IMPORT))
+
+from kernel.bootstrap import bootstrap_system
+from kernel.shared.paths import SCRIPTS_AUDITORIA
+
+bootstrap_system()
+
+# Adapter temporário até scripts/auditoria virar pacote importável.
+if str(SCRIPTS_AUDITORIA) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_AUDITORIA))
 
 from models import MotorResult, Status
 from relatorios.console import imprimir_console, gerar_markdown

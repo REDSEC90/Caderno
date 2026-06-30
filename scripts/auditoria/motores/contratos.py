@@ -4,9 +4,6 @@ Compara campos obrigatórios definidos no contrato com o template correspondente
 Um campo obrigatório no contrato deve existir no frontmatter do template.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 import re
 from models import AuditResult, MotorResult, Status, Severidade
 from config import DOCS, ROOT, ENTIDADES

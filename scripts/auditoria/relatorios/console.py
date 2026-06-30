@@ -3,9 +3,6 @@ Módulo de relatórios do FAA.
 Gera saída no terminal (console) e relatório Markdown em docs/99-referencias/.
 """
 
-import sys
-sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
-
 from datetime import datetime
 from models import AuditResult, MotorResult, Status, Severidade
 from config import ROOT, DOCS

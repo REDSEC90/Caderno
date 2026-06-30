@@ -4,10 +4,16 @@ Caminhos resolvidos contra os nomes reais dos arquivos (com sufixo de versão).
 Este arquivo é imutável após release — não alterar.
 """
 
+import sys
 from pathlib import Path
 import re
 
-ROOT        = Path(__file__).parent.parent.parent.resolve()
+_PROJECT_ROOT_FOR_IMPORT = Path(__file__).resolve().parents[2]
+if str(_PROJECT_ROOT_FOR_IMPORT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT_FOR_IMPORT))
+
+from kernel.shared.paths import ROOT
+
 DADOS       = ROOT / "dados"
 DOCS        = ROOT / "docs"
 BANCO       = ROOT / "banco_de_dados"
@@ -145,7 +151,7 @@ BASELINE_V1: dict[str, Path] = {
     "sqlite-doc":            DOCS / "03-modelagem" / "sqlite-v1.md",
     # Banco de dados
     "schema-sqlite":         BANCO / "esquemas" / "schema-sqlite-v1.sql",
-    "seed-categorias":       BANCO / "seeds" / "seed-categorias.sql",
+    "seed-categorias":       BANCO / "seeds" / "seed-categorias-v1.sql",
     # Desenvolvimento e operação
     "casos-de-uso":          DOCS / "05-desenvolvimento" / "casos-de-uso-v1.md",
     "padroes-desenvolvimento": DOCS / "05-desenvolvimento" / "padroes-desenvolvimento-v1.md",
