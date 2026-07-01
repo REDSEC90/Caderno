@@ -1,11 +1,11 @@
 {
   "version": "2.0",
-  "timestamp": "2026-07-01T21:21:09.936004+00:00",
+  "timestamp": "2026-07-01T21:24:22.917225+00:00",
   "metrics": {
-    "score": 93.78,
+    "score": 93.76,
     "integrity": 90.0,
     "decision": "DEGRADED",
-    "total_files": 418,
+    "total_files": 417,
     "health": "WARNING",
     "coverage": {
       "documentation": 236,
@@ -19,9 +19,9 @@
       "data": 13,
       "schema": 4,
       "automation": 83,
-      "other": 82
+      "other": 81
     },
-    "total_files": 418,
+    "total_files": 417,
     "missing_dirs": [
       "docs/03-especificacoes"
     ],
