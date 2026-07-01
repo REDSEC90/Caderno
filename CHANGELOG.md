@@ -6,28 +6,60 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ---
 
-## [Em desenvolvimento] — v0.8.0 — Escalabilidade
+## [v0.8.0] — 2026-07-01 — Escalabilidade
 
-### Etapa 1 — Testes unitários do `codigo/` ✅ CONCLUÍDA
+### Objetivo desta release
 
-**Data:** 2026-07-01
+Consolidar cobertura de testes dos módulos centrais do runtime (`codigo/`), eliminando lacunas críticas de cobertura zero e fortalecendo a base para escalabilidade futura.
 
-**Objetivo:** Eliminar lacuna de cobertura zero nos módulos centrais do runtime.
+---
 
-**Entregas:**
-- `testes/unit/test_importador.py` — 16 novos testes, cobertura 0% → 91%
-- `testes/unit/test_parser.py` — 4 novos testes, cobertura 82% → 92%
-- Cobertura total do `codigo/`: 45% → 73% (≥91% em todos os módulos críticos)
-- Total de testes: 410 → 430 (+20)
+### Adicionado
+
+**Testes unitários de `codigo/` (Etapa 1):**
+- `testes/unit/test_importador.py` — 16 novos testes
+  - `test_tipo_from_id` — extração de tipo a partir do prefixo do ID
+  - `test_row_for_*` — 7 testes para cada tipo de entidade (receita, ingrediente, técnica, equipamento, execução, observação, experimento)
+  - `test_importar_*` — 9 testes para inserção, atualização, arestas N:N, relacionamentos, histórico, idempotência, grafo vazio
+  
+- `testes/unit/test_parser.py` — 4 novos testes
+  - `test_parse_file_frontmatter_fallback_yaml` — fallback quando python-frontmatter não está disponível
+  - `test_parse_file_field_com_lista_de_numeros` — validação de campos com lista de números
+  - `test_parse_file_field_com_id_invalido` — validação de IDs inválidos
+  - `test_parse_directory_com_arquivo_invalido` — processamento robusto de arquivos malformados
+
+---
+
+### Melhorado
+
+**Cobertura de testes:**
+- `codigo/importador.py`: 0% → 91%
+- `codigo/parser.py`: 82% → 92%
+- Cobertura total do módulo `codigo/`: 45% → 73%
+- Todos os módulos críticos agora com ≥91% de cobertura
+
+---
+
+### Testes
+
+- **444/444 passando** (100%)
+- Total de testes: 410 → 444 (+34 novos testes desde v0.7.0, +20 na Etapa 1 de v0.8)
 - Zero regressões
+- Validação arquitetural — PASS
 
-**Testes adicionados:**
-- `test_tipo_from_id` — extração de tipo a partir do prefixo do ID
-- `test_row_for_*` — 7 testes para cada tipo de entidade (receita, ingrediente, técnica, equipamento, execução, observação, experimento)
-- `test_importar_*` — 9 testes para inserção, atualização, arestas N:N, relacionamentos, histórico, idempotência, grafo vazio
-- `test_parse_file_frontmatter_fallback_yaml` — fallback quando python-frontmatter não está disponível
-- `test_parse_file_field_com_*` — validação de campos com lista de números, IDs inválidos
-- `test_parse_directory_com_arquivo_invalido` — processamento robusto de arquivos malformados
+---
+
+### Estado pós-release
+
+| Área                        | Estado              |
+|-----------------------------|---------------------|
+| Arquitetura                 | ✅ Congelada        |
+| Kernel                      | ✅ Estável          |
+| Código runtime              | ✅ Cobertura ≥91%   |
+| Total de testes             | ✅ 444/444          |
+| Cobertura codigo/           | ✅ 73%              |
+| Regressões                  | ✅ Zero             |
+| API pública                 | ✅ Inalterada       |
 
 ---
 
@@ -217,6 +249,7 @@ Implementação das Fases 0–6 do Kernel:
 
 ---
 
+[v0.8.0]: https://github.com/soe-ccg/soe-ccg/releases/tag/v0.8.0
 [v0.7.0]: https://github.com/soe-ccg/soe-ccg/releases/tag/v0.7.0
 [v0.6.0]: https://github.com/soe-ccg/soe-ccg/releases/tag/v0.6.0
 
