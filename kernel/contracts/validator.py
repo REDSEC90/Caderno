@@ -63,9 +63,7 @@ ALLOWED_SYS_PATH_ADAPTERS = {
     "scripts/faa/faa",
     "scripts/faa/config.py",
     "scripts/auditoria/auditor.py",
-    "scripts/auditoria/auditor-v1.py",
     "scripts/auditoria/config.py",
-    "scripts/auditoria/config_v1.py",
     "scripts/faa/tests/test_basic.py",
 }
 
@@ -173,6 +171,9 @@ def _python_files(root: Path):
     for path in root.rglob("*.py"):
         parts = set(path.parts)
         if "__pycache__" in parts or ".pytest_cache" in parts:
+            continue
+        # Ignorar diretórios de archive (contêm material histórico, não ativo)
+        if "archive" in parts:
             continue
         yield path
 
