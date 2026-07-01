@@ -1,6 +1,6 @@
 # SOE-CCG — Matriz de Rastreabilidade
 
-**Versão:** 1.0  
+**Versão:** 1.1  
 **Data:** 2026-07-01  
 **Status:** ATIVO  
 
@@ -86,8 +86,8 @@ Teste
 | Lei / Invariante                              | Contrato                            | Implementação                        | Teste                              | Estado   |
 |-----------------------------------------------|-------------------------------------|--------------------------------------|------------------------------------|----------|
 | Não podem existir dependências circulares     | `03_modelo_dependencias-v1.md` §2   | `kernel/registry/module_registry.py` | `test_registry_v2.py`              | ✅ OK    |
-| Código depende do Kernel, nunca o contrário   | `FASE-1-CAMADAS.md` §hierarquia     | `kernel/` (estrutura)                | (estrutural — verificação manual)  | ⚠️ PARCIAL |
-| Kernel não importa de `codigo/`               | `FASE-1-MATRIZ-DEPENDENCIAS.md`     | `kernel/` (imports)                  | (estrutural — verificação manual)  | ⚠️ PARCIAL |
+| Código depende do Kernel, nunca o contrário   | `FASE-1-CAMADAS.md` §hierarquia     | `kernel/` (estrutura)                | `test_kernel_validator_*`          | ✅ OK    |
+| Kernel não importa de `codigo/`               | `FASE-1-MATRIZ-DEPENDENCIAS.md`     | `kernel/` (imports)                  | `test_kernel_validator_*`          | ✅ OK    |
 
 ---
 
@@ -114,6 +114,30 @@ Teste
 
 ---
 
+## 10. Observabilidade e Diagnóstico (v0.7)
+
+| Lei / Invariante                                    | Contrato                                        | Implementação                        | Teste                              | Estado   |
+|-----------------------------------------------------|-------------------------------------------------|--------------------------------------|------------------------------------|----------|
+| Kernel deve ser inspecionável em tempo de execução  | `ADR-0003-OBSERVABILIDADE-KERNEL-v1.md`         | `kernel/diagnostics/inspector.py`    | `test_diagnostics.py`              | ✅ OK    |
+| Health checks padronizados em todos os componentes  | `ADR-0003-OBSERVABILIDADE-KERNEL-v1.md`         | `kernel/diagnostics/doctor.py`       | `test_diagnostics.py`              | ✅ OK    |
+| Diagnóstico agrega todos os componentes             | `ADR-0003-OBSERVABILIDADE-KERNEL-v1.md`         | `kernel/diagnostics/doctor.py`       | `test_diagnostics.py`              | ✅ OK    |
+| Módulos deprecated aparecem nos avisos              | `ADR-0003-OBSERVABILIDADE-KERNEL-v1.md`         | `kernel/diagnostics/doctor.py`       | `test_diagnostics.py`              | ✅ OK    |
+| Serviços com health falha aparecem nos issues       | `ADR-0003-OBSERVABILIDADE-KERNEL-v1.md`         | `kernel/diagnostics/doctor.py`       | `test_diagnostics.py`              | ✅ OK    |
+
+---
+
+## 11. Testes de Integração (v0.7)
+
+| Cenário                                             | Escopo                                          | Arquivo de teste                                        | Estado   |
+|-----------------------------------------------------|-------------------------------------------------|---------------------------------------------------------|----------|
+| Ciclo completo bootstrap → start → stop             | Integração Kernel                               | `testes/integration/test_kernel_full_lifecycle.py`      | ✅ OK    |
+| Propagação de eventos entre componentes             | Integração Events                               | `testes/integration/test_kernel_events_propagation.py`  | ✅ OK    |
+| Services + Lifecycle integrado                      | Integração Services                             | `testes/integration/test_kernel_services_lifecycle.py`  | ✅ OK    |
+| Queries avançadas no registry                       | Integração Registry                             | `testes/integration/test_kernel_registry_advanced.py`   | ✅ OK    |
+| Receitas do cookbook são executáveis                | Cookbook                                        | `testes/cookbook/test_cookbook.py`                      | ✅ OK    |
+
+---
+
 ## Legenda
 
 | Símbolo | Significado                                    |
@@ -124,16 +148,16 @@ Teste
 
 ---
 
-## Itens abertos para v0.5
+## Itens abertos para v0.8+
 
-1. Verificação automática de que `kernel/` não importa de `codigo/` — candidato para script de auditoria
-2. Cobertura de testes de regressão ainda vazia (`testes/regression/`)
-3. Testes `__init__.py` vazios em `testes/golden/invalid/` e `testes/golden/minimal/`
+1. Testes de regressão ainda vazios (`testes/regression/`)
+2. Golden files para `testes/golden/invalid/` e `testes/golden/minimal/`
+3. Cobertura de testes de carga (prevista para v0.9)
 
 ---
 
 **Documento:** `MATRIZ-RASTREABILIDADE.md`  
 **Localização:** `docs/`  
-**Versão:** 1.0  
+**Versão:** 1.1  
 **Data:** 2026-07-01  
 **Status:** NORMATIVO

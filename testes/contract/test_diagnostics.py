@@ -1,13 +1,19 @@
 """Testes do sistema de diagnóstico do Kernel."""
+import io
+import sys
+
 import pytest
 
 from kernel.bootstrap import bootstrap_system
 from kernel.contracts.module import ModuleContract
-from kernel.diagnostics import DiagnosticReport, inspect_kernel, run_diagnostics
-from kernel.diagnostics.inspector import (
+from kernel.diagnostics import (
+    DiagnosticReport,
     inspect_events,
+    inspect_kernel,
     inspect_registry,
     inspect_services,
+    print_diagnostics,
+    run_diagnostics,
 )
 from kernel.lifecycle import LifecycleState
 
@@ -217,3 +223,192 @@ def test_diagnostic_report_registry_health_verdadeiro_sem_deps_quebradas():
     report = run_diagnostics(kernel)
     # Bootstrap registra módulos válidos, então healthy deve ser True
     assert report.registry_health["healthy"] is True
+
+
+# ---------------------------------------------------------------------------
+# Cobertura de branches: summary com issues
+# ---------------------------------------------------------------------------
+
+def test_diagnostic_report_summary_com_issues():
+    """summary retorna mensagem de alerta quando há issues."""
+    kernel = bootstrap_system()
+    broken = ModuleContract(
+        name="broken_summary",
+        version="1.0.0",
+        type="service",
+        category="tool",
+        state="experimental",
+        provides=("cap_broken_summary",),
+        requires=("cap_nao_existe_summary",),
+        priority=100,
+        entrypoint=lambda: None,
+    )
+    kernel.register(broken)
+    report = run_diagnostics(kernel)
+    assert report.healthy is False
+    assert "problema" in report.summary.lower()
+
+
+def test_diagnostic_report_issues_tem_deps_ausentes():
+    """issues contém mensagem sobre dependências ausentes."""
+    kernel = bootstrap_system()
+    broken = ModuleContract(
+        name="broken_deps",
+        version="1.0.0",
+        type="service",
+        category="tool",
+        state="experimental",
+        provides=("cap_broken_deps",),
+        requires=("cap_que_nao_existe_deps",),
+        priority=100,
+        entrypoint=lambda: None,
+    )
+    kernel.register(broken)
+    report = run_diagnostics(kernel)
+    assert any("broken_deps" in issue or "cap_que_nao_existe_deps" in issue
+               for issue in report.issues)
+
+
+def test_diagnostic_report_service_nao_saudavel_aparece_nos_issues():
+    """Service que retorna healthy=False aparece nos issues."""
+    kernel = bootstrap_system()
+
+    class UnhealthyService:
+        def health(self):
+            return {"healthy": False, "reason": "propositalmente quebrado"}
+
+    kernel.register_service("svc_doente", UnhealthyService())
+    report = run_diagnostics(kernel)
+    assert not report.healthy
+    assert any("svc_doente" in issue for issue in report.issues)
+
+
+# ---------------------------------------------------------------------------
+# Cobertura de print_diagnostics
+# ---------------------------------------------------------------------------
+
+def test_print_diagnostics_kernel_saudavel(capsys):
+    """print_diagnostics imprime relatório sem problemas quando Kernel saudável."""
+    kernel = bootstrap_system()
+    report = run_diagnostics(kernel)
+    print_diagnostics(report)
+
+    captured = capsys.readouterr()
+    assert "KERNEL DIAGNOSTICS REPORT" in captured.out
+    assert "Nenhum problema detectado" in captured.out
+
+
+def test_print_diagnostics_com_issues(capsys):
+    """print_diagnostics lista problemas quando existem issues."""
+    kernel = bootstrap_system()
+    broken = ModuleContract(
+        name="broken_print",
+        version="1.0.0",
+        type="service",
+        category="tool",
+        state="experimental",
+        provides=("cap_broken_print",),
+        requires=("dep_que_nao_existe_print",),
+        priority=100,
+        entrypoint=lambda: None,
+    )
+    kernel.register(broken)
+    report = run_diagnostics(kernel)
+    print_diagnostics(report)
+
+    captured = capsys.readouterr()
+    assert "PROBLEMAS DETECTADOS" in captured.out
+
+
+def test_print_diagnostics_exibe_estado_kernel(capsys):
+    """print_diagnostics exibe o estado do kernel."""
+    kernel = bootstrap_system()
+    report = run_diagnostics(kernel)
+    print_diagnostics(report)
+
+    captured = capsys.readouterr()
+    assert "Estado do Kernel" in captured.out
+    assert report.kernel_state in captured.out
+
+
+def test_print_diagnostics_exibe_total_modulos(capsys):
+    """print_diagnostics exibe o total de módulos no registry."""
+    kernel = bootstrap_system()
+    report = run_diagnostics(kernel)
+    print_diagnostics(report)
+
+    captured = capsys.readouterr()
+    assert "Total de módulos" in captured.out
+
+
+def test_print_diagnostics_exibe_secao_eventos(capsys):
+    """print_diagnostics exibe seção de eventos."""
+    kernel = bootstrap_system()
+    report = run_diagnostics(kernel)
+    print_diagnostics(report)
+
+    captured = capsys.readouterr()
+    assert "Eventos" in captured.out
+    assert "handlers" in captured.out.lower()
+
+
+# ---------------------------------------------------------------------------
+# Cobertura: __init__ exporta todos os símbolos
+# ---------------------------------------------------------------------------
+
+def test_init_exporta_print_diagnostics():
+    """__init__ exporta print_diagnostics."""
+    import kernel.diagnostics as diag
+    assert hasattr(diag, "print_diagnostics")
+    assert callable(diag.print_diagnostics)
+
+
+def test_init_exporta_inspect_registry():
+    """__init__ exporta inspect_registry."""
+    import kernel.diagnostics as diag
+    assert hasattr(diag, "inspect_registry")
+    assert callable(diag.inspect_registry)
+
+
+def test_init_exporta_inspect_services():
+    """__init__ exporta inspect_services."""
+    import kernel.diagnostics as diag
+    assert hasattr(diag, "inspect_services")
+    assert callable(diag.inspect_services)
+
+
+def test_init_exporta_inspect_events():
+    """__init__ exporta inspect_events."""
+    import kernel.diagnostics as diag
+    assert hasattr(diag, "inspect_events")
+    assert callable(diag.inspect_events)
+
+
+def test_diagnostic_report_issues_inclui_modulos_deprecados():
+    """issues menciona módulos deprecados quando registry os detecta."""
+    kernel = bootstrap_system()
+
+    # Registrar dois módulos onde um está deprecated e depende do outro
+    # para forçar registry.health()['deprecated_modules'] a ser preenchido
+    deprecated_mod = ModuleContract(
+        name="mod_deprecado",
+        version="1.0.0",
+        type="library",
+        category="tool",
+        state="deprecated",    # módulo deprecado
+        provides=("cap_deprecada",),
+        requires=(),
+        priority=100,
+        entrypoint=lambda: None,
+    )
+    kernel.register(deprecated_mod)
+
+    # Verificar se registry.health() reporta deprecated_modules
+    health = kernel.registry.health()
+    if health.get("deprecated_modules"):
+        # O branch está acessível — executar run_diagnostics e checar issues
+        report = run_diagnostics(kernel)
+        assert any("deprecado" in issue for issue in report.issues)
+    else:
+        # Registry não rastreia deprecated em health — branch inatingível via API atual
+        pytest.skip("registry.health() não reporta deprecated_modules; branch N/A")

@@ -1,8 +1,25 @@
 # Roadmap Master
 
+**Última atualização:** 2026-07-01 (v1.1 — adicionada tabela de versões e referências aos planos de execução)
+
 ## Visão de Longo Prazo
 
 Horizonte: 5 anos
+
+---
+
+## Tabela de Versões
+
+| Versão   | Objetivo Principal        | Objetivo Secundário           | Estado             | Plano de Execução                        |
+|----------|---------------------------|-------------------------------|--------------------|------------------------------------------|
+| v0.5     | Congelamento arquitetural | Especificações                | ✅ Entregue        | —                                        |
+| v0.6     | Consolidação              | Limpeza e padronização        | ✅ Entregue        | —                                        |
+| v0.7     | Otimização interna        | Fortalecimento do Kernel      | ✅ Entregue        | `docs/99-referencias/PLANO-v0.7.md`     |
+| **v0.8** | **Escalabilidade**        | **Automação**                 | 🔵 Próxima         | `docs/99-referencias/PLANO-v0.8.md`     |
+| v0.9     | Hardening                 | Segurança e resiliência       | ⬜ Planejada       | `docs/99-referencias/PLANO-v0.9.md`     |
+| v1.0     | Maturidade                | Estabilidade de longo prazo   | ⬜ Planejada       | `docs/99-referencias/PLANO-v1.0.md`     |
+
+**Nota sobre v0.8:** Automação é o mecanismo que viabiliza a escalabilidade — não um objetivo concorrente. O sistema deve crescer (novos módulos, contratos, auditorias) sem aumentar exponencialmente o custo de manutenção.
 
 ---
 

@@ -1,6 +1,6 @@
 # SOE-CCG — Índice Mestre de Autoridade Documental
 
-**Versão:** 1.0  
+**Versão:** 1.1  
 **Data:** 2026-07-01  
 **Status:** ATIVO — Documento Normativo  
 
@@ -99,6 +99,16 @@ N documentos oficiais para o mesmo conceito
 
 ---
 
+## 4a. Kernel — Observabilidade e Diagnóstico (v0.7)
+
+| Conceito                            | Documento Oficial                                  | Localização                              |
+|-------------------------------------|----------------------------------------------------|------------------------------------------|
+| Observabilidade do Kernel (ADR)     | `ADR-0003-OBSERVABILIDADE-KERNEL-v1.md`            | `docs/04-padroes/`                       |
+| Guia de operação do Kernel          | `kernel-operations-guide-v1.md`                    | `docs/06-operacao/`                      |
+| Cookbook de integrações             | `kernel-cookbook-v1.md`                            | `docs/05-desenvolvimento/`               |
+
+---
+
 ## 5. Modelagem e Banco de Dados
 
 | Conceito                     | Documento Oficial                                  | Localização                              |
@@ -141,7 +151,9 @@ N documentos oficiais para o mesmo conceito
 |------------------------------|----------------------------------------------------|------------------------------------------|
 | Padrões de desenvolvimento   | `padroes-desenvolvimento-v1.md`                    | `docs/05-desenvolvimento/`               |
 | Casos de uso                 | `casos-de-uso-v1.md`                               | `docs/05-desenvolvimento/`               |
-| Guia de operação             | `guia-operacao-v1.md`                              | `docs/06-operacao/`                      |
+| Cookbook de integrações      | `kernel-cookbook-v1.md`                            | `docs/05-desenvolvimento/`               |
+| Guia de operação (geral)     | `guia-operacao-v1.md`                              | `docs/06-operacao/`                      |
+| Guia de operação do Kernel   | `kernel-operations-guide-v1.md`                    | `docs/06-operacao/`                      |
 
 ---
 
@@ -158,6 +170,8 @@ N documentos oficiais para o mesmo conceito
 | Barramento de eventos        | `bus.py`                                           | `kernel/events/`                         |
 | Service registry             | `service_registry.py`                              | `kernel/services/`                       |
 | Paths compartilhados         | `paths.py`                                         | `kernel/shared/`                         |
+| Diagnóstico — Doctor         | `doctor.py`                                        | `kernel/diagnostics/`                    |
+| Diagnóstico — Inspector      | `inspector.py`                                     | `kernel/diagnostics/`                    |
 
 ---
 
@@ -175,21 +189,27 @@ N documentos oficiais para o mesmo conceito
 
 ## 10. Testes
 
-| Escopo                       | Arquivo Oficial                                    | Localização                              |
-|------------------------------|----------------------------------------------------|------------------------------------------|
-| Contratos (microkernel)      | `test_microkernel.py`                              | `testes/contract/`                       |
-| Contratos v2                 | `test_contract_v2.py`                              | `testes/contract/`                       |
-| Contratos (geral)            | `test_contratos.py`                                | `testes/contract/`                       |
-| Registry v2                  | `test_registry_v2.py`                              | `testes/contract/`                       |
-| Lifecycle v2                 | `test_lifecycle_v2.py`                             | `testes/contract/`                       |
-| Events v1                    | `test_events_v1.py`                                | `testes/contract/`                       |
-| Services v1                  | `test_services_v1.py`                              | `testes/contract/`                       |
-| Parser (unit)                | `test_parser.py`                                   | `testes/unit/`                           |
-| Validador (unit)             | `test_validador.py`                                | `testes/unit/`                           |
-| Resolvedor (unit)            | `test_resolvedor.py`                               | `testes/unit/`                           |
-| IR (unit)                    | `test_ir.py`                                       | `testes/unit/`                           |
-| Pipeline (integration)       | `test_pipeline.py`                                 | `testes/integration/`                    |
-| Golden files                 | `test_golden.py`                                   | `testes/golden/`                         |
+| Escopo                             | Arquivo Oficial                                    | Localização                              |
+|------------------------------------|----------------------------------------------------|------------------------------------------|
+| Contratos (microkernel)            | `test_microkernel.py`                              | `testes/contract/`                       |
+| Contratos v2                       | `test_contract_v2.py`                              | `testes/contract/`                       |
+| Contratos (geral)                  | `test_contratos.py`                                | `testes/contract/`                       |
+| Registry v2                        | `test_registry_v2.py`                              | `testes/contract/`                       |
+| Lifecycle v2                       | `test_lifecycle_v2.py`                             | `testes/contract/`                       |
+| Events v1                          | `test_events_v1.py`                                | `testes/contract/`                       |
+| Services v1                        | `test_services_v1.py`                              | `testes/contract/`                       |
+| Diagnostics                        | `test_diagnostics.py`                              | `testes/contract/`                       |
+| Parser (unit)                      | `test_parser.py`                                   | `testes/unit/`                           |
+| Validador (unit)                   | `test_validador.py`                                | `testes/unit/`                           |
+| Resolvedor (unit)                  | `test_resolvedor.py`                               | `testes/unit/`                           |
+| IR (unit)                          | `test_ir.py`                                       | `testes/unit/`                           |
+| Pipeline (integration)             | `test_pipeline.py`                                 | `testes/integration/`                    |
+| Lifecycle completo (integration)   | `test_kernel_full_lifecycle.py`                    | `testes/integration/`                    |
+| Propagação de eventos (integration)| `test_kernel_events_propagation.py`                | `testes/integration/`                    |
+| Services + Lifecycle (integration) | `test_kernel_services_lifecycle.py`                | `testes/integration/`                    |
+| Registry avançado (integration)    | `test_kernel_registry_advanced.py`                 | `testes/integration/`                    |
+| Cookbook (receitas)                | `test_cookbook.py`                                 | `testes/cookbook/`                       |
+| Golden files                       | `test_golden.py`                                   | `testes/golden/`                         |
 
 ---
 

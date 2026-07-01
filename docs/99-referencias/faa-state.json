@@ -1,27 +1,27 @@
 {
   "version": "2.0",
-  "timestamp": "2026-06-30T22:53:06.801739+00:00",
+  "timestamp": "2026-07-01T21:01:38.379580+00:00",
   "metrics": {
-    "score": 100.0,
+    "score": 93.33,
     "integrity": 90.0,
-    "decision": "APPROVED",
-    "total_files": 326,
+    "decision": "DEGRADED",
+    "total_files": 390,
     "health": "WARNING",
     "coverage": {
-      "documentation": 186,
+      "documentation": 236,
       "data": 13,
-      "schema": 6
+      "schema": 4
     }
   },
   "structure": {
     "files_by_category": {
-      "documentation": 186,
+      "documentation": 236,
       "data": 13,
-      "schema": 6,
-      "automation": 70,
-      "other": 51
+      "schema": 4,
+      "automation": 73,
+      "other": 64
     },
-    "total_files": 326,
+    "total_files": 390,
     "missing_dirs": [
       "docs/03-especificacoes"
     ],
@@ -30,26 +30,440 @@
   },
   "issues": {
     "critical": [],
-    "warnings": [],
+    "warnings": [
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/INDICE-MESTRE.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "docs/MATRIZ-RASTREABILIDADE.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/FASE-0-API-PUBLICA.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/FASE-1-RESPONSABILIDADES.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/FASE-0-FREEZE-ARQUITETURAL.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/FASE-2-EXPANSAO-CONTRACT.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/FASE-1-MATRIZ-DEPENDENCIAS.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/CONTRACT_SCHEMA.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/FASE-1-CAMADAS.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/FASE-0-API-INTERNA.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/archive/FASE-0-INDICE.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/archive/FASE-11-RESUMO.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/archive/FASE-10-RESUMO.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/archive/FASE-1-RESUMO.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/archive/FASE-3-RESUMO.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/archive/FASE-3-DIAGRAMA-LIFECYCLE.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/archive/FASE-12-RESUMO.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/archive/FASE-9-RESUMO.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/archive/FASE-8-RESUMO.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/archive/FASE-4-RESUMO.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/archive/FASE-5-RESUMO.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/archive/FASE-7-RESUMO.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/archive/FASE-0-RESUMO.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/archive/FASE-6-RESUMO.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/archive/FASE-2-RESUMO.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      },
+      {
+        "type": "versioned_naming",
+        "severity": "warning",
+        "file": "kernel-docs/archive/FASE-0-LISTA-COMPONENTES.md",
+        "message": "Rule versioned_naming violated",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql"
+      }
+    ],
     "info": [],
     "counts": {
       "critical": 0,
-      "warnings": 0,
+      "warnings": 26,
       "info": 0
     }
   },
   "plan": {
-    "total_tasks": 0,
+    "total_tasks": 26,
     "critical_tasks": 0,
-    "tasks": [],
+    "tasks": [
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "docs/INDICE-MESTRE.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "docs/MATRIZ-RASTREABILIDADE.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "kernel-docs/FASE-0-API-PUBLICA.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "kernel-docs/FASE-1-RESPONSABILIDADES.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "kernel-docs/FASE-0-FREEZE-ARQUITETURAL.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "kernel-docs/FASE-2-EXPANSAO-CONTRACT.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "kernel-docs/FASE-1-MATRIZ-DEPENDENCIAS.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "kernel-docs/CONTRACT_SCHEMA.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "kernel-docs/FASE-1-CAMADAS.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      },
+      {
+        "priority": 2,
+        "type": "versioned_naming",
+        "file": "kernel-docs/FASE-0-API-INTERNA.md",
+        "action": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "severity": "WARNING"
+      }
+    ],
     "status": "READY"
   },
   "roadmap": {
-    "total_tasks": 0,
-    "total_epics": 0,
+    "total_tasks": 26,
+    "total_epics": 1,
     "high_impact_tasks": 0,
     "critical_tasks": 0,
-    "epics": [],
-    "execution_order": []
+    "epics": [
+      {
+        "id": "EPIC-DOCS",
+        "nome": "Consolidação docs",
+        "descricao": "Garantir consistência e completude da área docs",
+        "total_tasks": 26,
+        "tasks": [
+          {
+            "id": "TASK-001",
+            "area": "docs",
+            "tipo": "fix",
+            "prioridade": 50,
+            "impacto": "low",
+            "descricao": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+            "resultado_esperado": "Arquivo docs/INDICE-MESTRE.md conforme com padrões",
+            "dependencias": []
+          },
+          {
+            "id": "TASK-002",
+            "area": "docs",
+            "tipo": "fix",
+            "prioridade": 50,
+            "impacto": "low",
+            "descricao": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+            "resultado_esperado": "Arquivo docs/MATRIZ-RASTREABILIDADE.md conforme com padrões",
+            "dependencias": []
+          },
+          {
+            "id": "TASK-003",
+            "area": "docs",
+            "tipo": "fix",
+            "prioridade": 50,
+            "impacto": "low",
+            "descricao": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+            "resultado_esperado": "Arquivo kernel-docs/FASE-0-API-PUBLICA.md conforme com padrões",
+            "dependencias": []
+          },
+          {
+            "id": "TASK-004",
+            "area": "docs",
+            "tipo": "fix",
+            "prioridade": 50,
+            "impacto": "low",
+            "descricao": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+            "resultado_esperado": "Arquivo kernel-docs/FASE-1-RESPONSABILIDADES.md conforme com padrões",
+            "dependencias": []
+          },
+          {
+            "id": "TASK-005",
+            "area": "docs",
+            "tipo": "fix",
+            "prioridade": 50,
+            "impacto": "low",
+            "descricao": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+            "resultado_esperado": "Arquivo kernel-docs/FASE-0-FREEZE-ARQUITETURAL.md conforme com padrões",
+            "dependencias": []
+          }
+        ]
+      }
+    ],
+    "execution_order": [
+      {
+        "id": "TASK-001",
+        "area": "docs",
+        "tipo": "fix",
+        "prioridade": 50,
+        "impacto": "low",
+        "descricao": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "resultado_esperado": "Arquivo docs/INDICE-MESTRE.md conforme com padrões",
+        "dependencias": []
+      },
+      {
+        "id": "TASK-002",
+        "area": "docs",
+        "tipo": "fix",
+        "prioridade": 50,
+        "impacto": "low",
+        "descricao": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "resultado_esperado": "Arquivo docs/MATRIZ-RASTREABILIDADE.md conforme com padrões",
+        "dependencias": []
+      },
+      {
+        "id": "TASK-003",
+        "area": "docs",
+        "tipo": "fix",
+        "prioridade": 50,
+        "impacto": "low",
+        "descricao": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "resultado_esperado": "Arquivo kernel-docs/FASE-0-API-PUBLICA.md conforme com padrões",
+        "dependencias": []
+      },
+      {
+        "id": "TASK-004",
+        "area": "docs",
+        "tipo": "fix",
+        "prioridade": 50,
+        "impacto": "low",
+        "descricao": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "resultado_esperado": "Arquivo kernel-docs/FASE-1-RESPONSABILIDADES.md conforme com padrões",
+        "dependencias": []
+      },
+      {
+        "id": "TASK-005",
+        "area": "docs",
+        "tipo": "fix",
+        "prioridade": 50,
+        "impacto": "low",
+        "descricao": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "resultado_esperado": "Arquivo kernel-docs/FASE-0-FREEZE-ARQUITETURAL.md conforme com padrões",
+        "dependencias": []
+      },
+      {
+        "id": "TASK-006",
+        "area": "docs",
+        "tipo": "fix",
+        "prioridade": 50,
+        "impacto": "low",
+        "descricao": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "resultado_esperado": "Arquivo kernel-docs/FASE-2-EXPANSAO-CONTRACT.md conforme com padrões",
+        "dependencias": []
+      },
+      {
+        "id": "TASK-007",
+        "area": "docs",
+        "tipo": "fix",
+        "prioridade": 50,
+        "impacto": "low",
+        "descricao": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "resultado_esperado": "Arquivo kernel-docs/FASE-1-MATRIZ-DEPENDENCIAS.md conforme com padrões",
+        "dependencias": []
+      },
+      {
+        "id": "TASK-008",
+        "area": "docs",
+        "tipo": "fix",
+        "prioridade": 50,
+        "impacto": "low",
+        "descricao": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "resultado_esperado": "Arquivo kernel-docs/CONTRACT_SCHEMA.md conforme com padrões",
+        "dependencias": []
+      },
+      {
+        "id": "TASK-009",
+        "area": "docs",
+        "tipo": "fix",
+        "prioridade": 50,
+        "impacto": "low",
+        "descricao": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "resultado_esperado": "Arquivo kernel-docs/FASE-1-CAMADAS.md conforme com padrões",
+        "dependencias": []
+      },
+      {
+        "id": "TASK-010",
+        "area": "docs",
+        "tipo": "fix",
+        "prioridade": 50,
+        "impacto": "low",
+        "descricao": "Adicionar sufixo de versão: -v1.md ou -v1.sql",
+        "resultado_esperado": "Arquivo kernel-docs/FASE-0-API-INTERNA.md conforme com padrões",
+        "dependencias": []
+      }
+    ]
   }
 }

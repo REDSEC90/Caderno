@@ -49,15 +49,22 @@ def run_diagnostics(kernel) -> DiagnosticReport:
         # Agregar problemas detectados no registry
         issues.extend(registry_health.get("missing_dependencies", []))
         issues.extend(registry_health.get("circular_dependencies", []))
-        if registry_health.get("deprecated_modules"):
-            issues.append(f"{len(registry_health['deprecated_modules'])} módulo(s) deprecado(s)")
+
+    # Módulos deprecados são aviso mesmo quando registry está saudável
+    if registry_health.get("deprecated_modules"):
+        issues.append(
+            f"{len(registry_health['deprecated_modules'])} módulo(s) deprecado(s)"
+        )
 
     # Services
     services_health = kernel.services.all_health()
     services_stats = kernel.services.stats()
 
     for service_name, health in services_health.items():
-        if not health["healthy"]:
+        # all_health() retorna {'name': ..., 'health_result': {...}, ...}
+        # health_result pode ser None se o serviço não tem método health()
+        health_result = health.get("health_result")
+        if health_result is not None and not health_result.get("healthy", True):
             issues.append(f"Service '{service_name}' não está saudável")
 
     # Events
@@ -99,12 +106,12 @@ def print_diagnostics(report: DiagnosticReport) -> None:
 
     print("Serviços:")
     print(f"  - Total de serviços: {report.services_stats['total_services']}")
-    print(f"  - Com health check: {report.services_stats['with_health_check']}")
+    print(f"  - Com health check: {report.services_stats['with_health_method']}")
     print()
 
     print("Eventos:")
     print(f"  - Total de handlers: {report.events_stats['total_handlers']}")
-    print(f"  - Total de publicações: {report.events_stats['total_published']}")
+    print(f"  - Total de publicações: {report.events_stats['total_events_published']}")
     print()
 
     if report.issues:
