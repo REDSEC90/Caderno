@@ -126,3 +126,132 @@ def test_parse_field_receita_base_id_gera_derivation(tmp_path):
     entity = parse_file(p)
     assert any(e.kind == EdgeKind.DERIVATION and e.target == "REC-000001"
                for e in entity.outgoing)
+
+
+def test_parse_file_frontmatter_fallback_yaml(tmp_path, monkeypatch):
+    """Testa fallback para yaml quando python-frontmatter não está disponível."""
+    # Simular ausência de python-frontmatter
+    import sys
+    monkeypatch.setitem(sys.modules, 'frontmatter', None)
+    
+    p = _write_md(tmp_path, "REC-000001.md", """\
+        ---
+        id: REC-000001
+        tipo: receita
+        titulo: Teste
+        ---
+        Corpo da receita.
+    """)
+    
+    entity = parse_file(p)
+    assert entity.id == "REC-000001"
+    assert entity.tipo == "receita"
+    assert entity.metadata["titulo"] == "Teste"
+
+
+def test_parse_file_field_com_lista_de_numeros(tmp_path):
+    """Testa campo frontmatter com lista de valores não-string."""
+    p = _write_md(tmp_path, "REC-000001.md", """\
+        ---
+        id: REC-000001
+        tipo: receita
+        versoes: [1, 2, 3]
+        ---
+        Corpo.
+    """)
+    
+    entity = parse_file(p)
+    # Valores não-ID devem ser convertidos para string mas não virar aresta
+    assert len(entity.outgoing) == 0
+
+
+def test_parse_file_field_com_id_invalido(tmp_path):
+    """Testa que valores que não são IDs válidos são ignorados."""
+    p = _write_md(tmp_path, "REC-000001.md", """\
+        ---
+        id: REC-000001
+        tipo: receita
+        referencia: "texto-livre-nao-id"
+        outro: "ABC-123"
+        ---
+        Corpo.
+    """)
+    
+    entity = parse_file(p)
+    # Nenhum dos valores é um ID válido
+    assert len(entity.outgoing) == 0
+
+
+
+
+def test_parse_file_frontmatter_fallback_yaml(tmp_path, monkeypatch):
+    """Testa fallback para yaml quando python-frontmatter não está disponível."""
+    # Simular ausência de python-frontmatter
+    import sys
+    monkeypatch.setitem(sys.modules, 'frontmatter', None)
+    
+    p = _write_md(tmp_path, "REC-000001.md", """\
+        ---
+        id: REC-000001
+        tipo: receita
+        titulo: Teste
+        ---
+        Corpo da receita.
+    """)
+    
+    entity = parse_file(p)
+    assert entity.id == "REC-000001"
+    assert entity.tipo == "receita"
+    assert entity.metadata["titulo"] == "Teste"
+
+
+def test_parse_file_field_com_lista_de_numeros(tmp_path):
+    """Testa campo frontmatter com lista de valores não-string."""
+    p = _write_md(tmp_path, "REC-000001.md", """\
+        ---
+        id: REC-000001
+        tipo: receita
+        versoes: [1, 2, 3]
+        ---
+        Corpo.
+    """)
+    
+    entity = parse_file(p)
+    # Valores não-ID devem ser convertidos para string mas não virar aresta
+    assert len(entity.outgoing) == 0
+
+
+def test_parse_file_field_com_id_invalido(tmp_path):
+    """Testa que valores que não são IDs válidos são ignorados."""
+    p = _write_md(tmp_path, "REC-000001.md", """\
+        ---
+        id: REC-000001
+        tipo: receita
+        referencia: "texto-livre-nao-id"
+        outro: "ABC-123"
+        ---
+        Corpo.
+    """)
+    
+    entity = parse_file(p)
+    # Nenhum dos valores é um ID válido
+    assert len(entity.outgoing) == 0
+
+
+def test_parse_directory_com_arquivo_invalido(tmp_path):
+    """parse_directory processa arquivos válidos e trata malformados como sem frontmatter."""
+    # Arquivo válido
+    _write_md(tmp_path, "REC-000001.md", "---\nid: REC-000001\ntipo: receita\n---\n")
+    
+    # Arquivo malformado (sem fechamento de frontmatter) — será tratado como sem frontmatter
+    invalido = tmp_path / "invalido.md"
+    invalido.write_text("---\nfrontmatter: malformado\nno final\n")
+    
+    graph = parse_directory(tmp_path)
+    
+    # Arquivo válido foi processado
+    assert "REC-000001" in graph.entities
+    
+    # Arquivo malformado foi processado mas sem metadata (body inteiro)
+    assert "invalido" in graph.entities
+    assert graph.entities["invalido"].metadata == {}  # Sem frontmatter extraído

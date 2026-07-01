@@ -46,8 +46,8 @@ def _cmd_importar(args: list[str]) -> int:
     result = importar(grafo, db)
     print(f'[importar] Inseridos: {result.inseridos}  Atualizados: {result.atualizados}  '
           f'Erros: {len(result.erros)}')
-    for e in result.erros:
-        print(f'  [ERRO] {e}', file=sys.stderr)
+    for err_msg in result.erros:
+        print(f'  [ERRO] {err_msg}', file=sys.stderr)
     return 1 if result.erros else 0
 
 

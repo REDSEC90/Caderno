@@ -191,6 +191,8 @@ def importar(grafo: KnowledgeGraph, db_path: Path = DB_PATH) -> ImportResult:
                 if edge.kind.value != 'COMPOSITIONAL':
                     continue
                 tgt_tipo = _tipo_from_id(edge.target)
+                if tgt_tipo is None:
+                    continue
                 mapping  = _N2N.get((entity.tipo.lower(), tgt_tipo))
                 if not mapping:
                     continue
