@@ -1,0 +1,17 @@
+# SOE-CCG — Dependências de Desenvolvimento
+# Instale com: pip install -r requirements-dev.txt
+
+# Testing
+pytest>=7.0
+pytest-cov>=4.0
+
+# Type checking
+mypy>=1.0
+types-PyYAML
+
+# Linting & Formatting
+ruff>=0.1.0
+
+# Core dependencies
+PyYAML>=6.0
+python-frontmatter>=1.0.0
